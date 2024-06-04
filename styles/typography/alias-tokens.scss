@@ -1,0 +1,7 @@
+@use "./global-tokens" as gt;
+
+$textSmall: gt.$fontSize12 gt.$lineHeight16;
+$textMedium: gt.$fontSize14 gt.$lineHeight20;
+$textBase: gt.$fontSize16 gt.$lineHeight24;
+$textLarge: gt.$fontSize20 gt.$lineHeight28;
+$textExtraLarge: gt.$fontSize24 gt.$lineHeight32;

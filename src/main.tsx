@@ -1,10 +1,8 @@
 import ReactDOM from "react-dom/client";
 import { mockTelegramEnv, parseInitData } from "@tma.js/sdk-react";
-
 import { Root } from "@/components/Root";
-
 import "@telegram-apps/telegram-ui/dist/styles.css";
-import "./index.css";
+import "../styles/global.scss";
 
 // This line of code allows us to safely launch the application even outside
 // the Telegram application. It will also only be applied in development mode, not in

@@ -1,12 +1,13 @@
 @use "../../../styles/colors.scss";
+@use "../../../styles/radius.scss";
 
 .bottomNavigation {
   background-color: colors.$bottomNavigationBg;
-  border-radius: 20px;
+  border-radius: radius.$rounded3Xl;
   position: fixed;
   bottom: 0;
   left: 16px;
   right: 16px;
-  padding: 4px;
+  padding: 6px;
   display: flex;
 }

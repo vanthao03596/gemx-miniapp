@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./bottom-navigation-item.module.scss";
+import Svg from "@/icon/svg";
 
 type BottomNavigationItemProps = {
   title: string;
@@ -19,6 +20,7 @@ export const BottomNavigationItem = ({
       to={href}
       className={[styles.bottomNavigationItem, styles[status]].join(" ")}
     >
+      <Svg src="/icons/home.svg" className={styles.navIcon} />
       <p>{title}</p>
     </Link>
   );

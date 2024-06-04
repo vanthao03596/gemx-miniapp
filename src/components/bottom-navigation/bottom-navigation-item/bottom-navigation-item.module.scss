@@ -1,0 +1,25 @@
+@use "../../../../styles/colors.scss";
+
+.bottomNavigationItem {
+  padding: 5px;
+  border-radius: 16px;
+  width: 25%;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  white-space: nowrap;
+  text-align: center;
+  text-decoration: none;
+
+  & > p {
+    width: 100%;
+    font-size: 15px;
+    color: colors.$white;
+    opacity: 0.8;
+  }
+}
+
+.active {
+  background-color: colors.$bottomNavigationItemBg;
+}

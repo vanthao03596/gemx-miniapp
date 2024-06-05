@@ -15,10 +15,10 @@ export interface Route {
 export const routes: Route[] = [
   { path: "/", Component: IndexPage, title: "Home" },
   { path: "/init-data", Component: InitDataPage, title: "Init Data" },
-  { path: "/theme-params", Component: ThemeParamsPage, title: "Theme Params" },
+  { path: "/theme-params", Component: ThemeParamsPage, title: "Theme" },
   {
     path: "/launch-params",
     Component: LaunchParamsPage,
-    title: "Launch Params",
+    title: "Launch",
   },
 ];

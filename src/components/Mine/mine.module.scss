@@ -1,0 +1,57 @@
+@use "../../../styles/radius.scss";
+@use "../../../styles/typography/global-tokens.scss" as gt;
+
+.mineContainer {
+  color: var(--tg-theme-accent-text-color);
+  & > p {
+    margin-top: 20px;
+    font-size: gt.$fontSize14;
+    line-height: gt.$lineHeight20;
+  }
+
+  .buttonContainer {
+    position: absolute;
+    top: calc(100% - 20px);
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+  }
+}
+
+.descContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
+  .boxContainer {
+    padding: 16px;
+    justify-content: start;
+    align-items: start;
+    color: var(--tg-theme-accent-text-color);
+
+    p {
+      color: var(--tg-theme-section-header-text-color);
+      margin-top: 16px;
+      font-size: gt.$fontSize14;
+      line-height: gt.$lineHeight20;
+    }
+  }
+}
+
+.boxContainer {
+  position: relative;
+  margin-top: 40px;
+  padding: 16px 16px 40px;
+  width: 100%;
+  min-height: 56px;
+  border-radius: radius.$roundedLg;
+  border: 1px solid var(--tg-theme-accent-text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

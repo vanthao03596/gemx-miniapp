@@ -31,6 +31,8 @@ export const App: FC = () => {
   }, [themeParams]);
 
   useEffect(() => {
+    viewport?.expand();
+    
     return viewport && bindViewportCSSVars(viewport);
   }, [viewport]);
 

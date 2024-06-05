@@ -1,4 +1,4 @@
-import { SDKProvider, useLaunchParams, useViewport } from '@tma.js/sdk-react';
+import { SDKProvider, useLaunchParams } from '@tma.js/sdk-react';
 import { type FC, useEffect } from 'react';
 
 import { App } from '@/components/App.tsx';
@@ -20,8 +20,6 @@ const ErrorBoundaryError: FC<{ error: unknown }> = ({ error }) => (
 );
 
 const Inner: FC = () => {
-  const vp = useViewport()
-
   const debug = useLaunchParams().startParam === 'debug';
 
   // Enable debug mode to see all the methods sent and events received.
@@ -30,10 +28,6 @@ const Inner: FC = () => {
       import('eruda').then((lib) => lib.default.init());
     }
   }, [debug]);
-
-  useEffect(() => {
-    vp?.expand()
-  }, [vp]);
 
   return (
       <SDKProvider acceptCustomStyles debug={debug}>

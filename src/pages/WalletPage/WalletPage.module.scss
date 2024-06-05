@@ -1,0 +1,55 @@
+.container {
+    margin-top: 1rem;
+
+    .title {
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .action {
+        margin-top: 1rem;
+
+        .group {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+
+            .item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 0.25rem;
+
+                .icon {
+                    border-radius: 50%;
+                    overflow: hidden;
+                    padding: 0.75rem;
+                }
+            }
+        }
+    }
+
+    .balance {
+        margin-top: 2rem;
+
+        .title {
+            margin-bottom: 1rem;
+            color: var(--tg-theme-accent-text-color);
+        }
+
+        .cell {
+            padding: 0.25rem 1rem;
+
+            .badge {
+                display: flex;
+                align-items: center;
+            }
+
+            .text {
+                color: var(--tg-theme-text-color);
+                font-weight: 500;
+            }
+        }
+    }
+}

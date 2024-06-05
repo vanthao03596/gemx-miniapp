@@ -1,10 +1,9 @@
-import type { ComponentType, JSX } from "react";
-
 import Svg from "@/icon/svg";
 import { HomePage } from "@/pages/HomePage";
-import { InitDataPage } from "@/pages/InitDataPage/InitDataPage";
 import { LaunchParamsPage } from "@/pages/LaunchParamsPage/LaunchParamsPage.tsx";
 import { ThemeParamsPage } from "@/pages/ThemeParamsPage/ThemeParamsPage.tsx";
+import { WalletPage } from "@/pages/WalletPage";
+import type { ComponentType, JSX } from "react";
 
 export interface Route {
   path: string;
@@ -21,9 +20,9 @@ export const routes: Route[] = [
     icon: <Svg src="/icons/home.svg" className="icon" />,
   },
   {
-    path: "/init-data",
-    Component: InitDataPage,
-    title: "Init Data",
+    path: "/wallet",
+    Component: WalletPage,
+    title: "Wallet",
     icon: <Svg src="/icons/home.svg" className="icon" />,
   },
   {

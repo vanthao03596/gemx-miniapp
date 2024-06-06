@@ -1,46 +1,46 @@
-import { useTimer } from "@/hooks/useTimer";
+import { useInterval } from "@/hooks/useInterval";
 import { Button, Spinner } from "@telegram-apps/telegram-ui";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./mine.module.scss";
 
-const expiresInSeconds = new Date().getTime() + 60 * 60 * 1000;
-
 export const Mine = ({ gemInHour }: { gemInHour: number }) => {
+  // const expires = 30 * 1000;
   const gemInSecond = gemInHour / 3600;
   const [gem, setGem] = useState(0);
   const [start, setStart] = useState(false);
-  const { seconds, minutes, hours } = useTimer({
-    expiresInSeconds,
-    start,
-  });
+  // const [expiresInSeconds, setExpiresInSeconds] = useState<number>(
+  //   new Date().getTime() + 60 * 60 * 1000
+  // );
 
-  const handleStart = () => {
-    setStart(true);
-  };
+  // useEffect(() => {
+  //   if (start) {
+  //     setExpiresInSeconds(new Date().getTime() + expires);
+  //   }
+  // }, [start, expires]);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (start) {
-        setGem(gem + gemInSecond * 3);
-      }
-    }, 3000);
+  // const { seconds, minutes, hours } = useTimer({
+  //   expiresInSeconds,
+  //   start,
+  // });
 
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [gem, gemInSecond, start]);
+  useInterval(
+    () => {
+      setGem(gem + gemInSecond * 3);
+    },
+    start ? 3000 : null
+  );
 
-  const formatTime = (time: number) => {
-    return ("0" + time).slice(-2);
-  };
+  // const formatTime = (time: number) => {
+  //   return ("0" + time).slice(-2);
+  // };
 
   return (
     <>
       <div className={[styles.mineContainer, styles.boxContainer].join(" ")}>
         <h2>{start ? gem.toFixed(4) : "0"} GEM</h2>
-        <p style={{ display: start ? "block" : "none" }}>
+        {/* <p style={{ display: start ? "block" : "none" }}>
           {formatTime(hours)}h {formatTime(minutes)}m {formatTime(seconds)}s
-        </p>
+        </p> */}
         <p>
           {start
             ? "Thời gian nhận phần thưởng tiếp theo"
@@ -50,7 +50,7 @@ export const Mine = ({ gemInHour }: { gemInHour: number }) => {
           <Button
             size="m"
             mode="filled"
-            onClick={handleStart}
+            onClick={() => setStart(!start)}
             after={start ? <Spinner size="s" /> : null}
           >
             {start ? "Đang khai thác" : "Bắt đầu khai thác"}

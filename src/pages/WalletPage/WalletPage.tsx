@@ -1,3 +1,4 @@
+import { CustomHeader } from '@/components/CustomHeader';
 import { Link } from '@/components/Link/Link';
 import {
     BitcoinIconsReceiveOutline,
@@ -8,9 +9,9 @@ import {
     MaterialSymbolsLightRocketLaunchOutlineRounded,
     MaterialSymbolsLightSavingsOutlineRounded,
 } from '@/icon/icon';
-import { Avatar, Badge, Cell, Divider, IconButton, List, Text, Title } from '@telegram-apps/telegram-ui';
-import styles from './WalletPage.module.scss';
+import { Avatar, Badge, Cell, Divider, IconButton, Section, Text, Title } from '@telegram-apps/telegram-ui';
 import React from 'react';
+import styles from './WalletPage.module.scss';
 
 const actions = [
     {
@@ -73,9 +74,7 @@ const WalletPage = () => {
     return (
         <div className={styles.container}>
             {/* Title */}
-            <Title level='2' weight='2' className={styles.title}>
-                Wallet
-            </Title>
+            <CustomHeader title={'Wallet'} />
 
             {/* Action */}
             <div className={styles.action}>
@@ -87,7 +86,7 @@ const WalletPage = () => {
                                     {item.icon}
                                 </IconButton>
                             </Link>
-                            <Text className={styles.text}>{item.text}</Text>
+                            <Text>{item.text}</Text>
                         </div>
                     ))}
                 </div>
@@ -95,11 +94,10 @@ const WalletPage = () => {
 
             {/* Balance */}
             <div className={styles.balance}>
-                <Title level='3' weight='2' className={styles.title}>
+                <Title level='2' weight='2' caps className={styles.title}>
                     Balance
                 </Title>
-                <Divider />
-                <List>
+                <Section className={styles.section}>
                     {balances.map((item, index) => (
                         <React.Fragment key={index}>
                             <Link to={item.link}>
@@ -123,7 +121,7 @@ const WalletPage = () => {
                             <Divider />
                         </React.Fragment>
                     ))}
-                </List>
+                </Section>
             </div>
         </div>
     );

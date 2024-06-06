@@ -2,6 +2,7 @@ import Svg from "@/icon/svg";
 import { HomePage } from "@/pages/HomePage";
 import { LaunchParamsPage } from "@/pages/LaunchParamsPage/LaunchParamsPage.tsx";
 import { ThemeParamsPage } from "@/pages/ThemeParamsPage/ThemeParamsPage.tsx";
+import { WalletHistoryPage } from "@/pages/WalletHistoryPage";
 import { WalletPage } from "@/pages/WalletPage";
 import type { ComponentType, JSX } from "react";
 
@@ -23,6 +24,12 @@ export const routes: Route[] = [
     path: "/wallet",
     Component: WalletPage,
     title: "Wallet",
+    icon: <Svg src="/icons/home.svg" className="icon" />,
+  },
+  {
+    path: "/wallet/history",
+    Component: WalletHistoryPage,
+    title: "Wallet History",
     icon: <Svg src="/icons/home.svg" className="icon" />,
   },
   {

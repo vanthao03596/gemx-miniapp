@@ -47,21 +47,21 @@ const actions = [
 
 const balances = [
     {
-        image: '',
+        image: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png',
         name: 'GXP',
         description: 'GEMX POINT',
         amount: 20,
         link: '/wallet/history?unit=gpx',
     },
     {
-        image: '',
+        image: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png',
         name: 'GP',
         description: 'GEMX PAY',
         amount: 5,
         link: '/wallet/history?unit=gp',
     },
     {
-        image: '',
+        image: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png',
         name: 'GEMX',
         description: 'GEMX TOKEN',
         amount: 10,
@@ -107,7 +107,10 @@ const WalletPage = () => {
                                     after={
                                         <div className={styles.badge}>
                                             <Badge type='number'>{item.amount}</Badge>
-                                            <MaterialSymbolsLightChevronRightRounded fontSize={32} />
+                                            <MaterialSymbolsLightChevronRightRounded
+                                                fontSize={32}
+                                                className={styles.chevron}
+                                            />
                                         </div>
                                     }
                                     before={<Avatar src={item.image} size={48} />}

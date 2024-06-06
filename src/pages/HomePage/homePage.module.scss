@@ -1,0 +1,36 @@
+@use "../../../styles/typography/global-tokens.scss" as gt;
+
+.homePage {
+  padding: 16px;
+
+  .reward {
+    margin-top: 16px;
+    & > div {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      p {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.modalContent {
+  padding: 16px;
+  h4 {
+    font-size: gt.$fontSize20;
+    line-height: gt.$lineHeight28;
+    color: var(--tg-theme-accent-text-color);
+    margin-bottom: 24px;
+  }
+  ul {
+    padding-left: 16px;
+    align-items: center;
+    li {
+      font-size: gt.$fontSize14;
+      line-height: gt.$lineHeight20;
+    }
+  }
+}

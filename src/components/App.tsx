@@ -14,7 +14,7 @@ import { type FC, useEffect, useMemo } from "react";
 import { Navigate, Route, Router, Routes } from "react-router-dom";
 
 import { routes } from "@/navigation/routes.tsx";
-import { BottomNavigation } from "./bottom-navigation";
+import { BottomNavigation } from "./BottomNavigation";
 
 export const App: FC = () => {
   const lp = useLaunchParams();
@@ -32,7 +32,7 @@ export const App: FC = () => {
 
   useEffect(() => {
     viewport?.expand();
-    
+
     return viewport && bindViewportCSSVars(viewport);
   }, [viewport]);
 

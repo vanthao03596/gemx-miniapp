@@ -35,7 +35,6 @@
 
         .title {
             margin-bottom: 1rem;
-            color: var(--tg-theme-accent-text-color);
         }
 
         .cell {
@@ -44,6 +43,14 @@
             .badge {
                 display: flex;
                 align-items: center;
+
+                .number {
+
+                }
+                
+                .chevron {
+                    color: var(--tg-theme-hint-color);
+                }
             }
 
             .text {

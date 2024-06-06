@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://api.gemx.io/api/miniapp/user/info';
+const BASE_URL = 'https://api.gemx.io/api/miniapp';
 
 /**
  * ! Create axiosClient

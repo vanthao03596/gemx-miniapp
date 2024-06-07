@@ -1,7 +1,7 @@
 import { axiosAuth } from '@/lib/axios';
 import { useLaunchParams } from '@tma.js/sdk-react';
 import { AxiosInstance } from 'axios';
-import React, { createContext, useEffect } from 'react';
+import React, { createContext, useLayoutEffect } from 'react';
 
 interface AxiosProviderProps {
     children: React.ReactNode;
@@ -17,7 +17,7 @@ const AxiosProvider = (props: AxiosProviderProps) => {
     const { children } = props;
     const initData = useLaunchParams().initDataRaw;
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const requestIntercept = axiosAuth.interceptors.request.use((config) => {
             if (!config.headers['Authorization']) {
                 config.headers['Authorization'] = `tma ${initData}`;

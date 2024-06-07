@@ -14,9 +14,10 @@ import { type FC, useEffect, useMemo } from 'react';
 import { Navigate, Route, Router, Routes } from 'react-router-dom';
 
 import { routes } from '@/navigation/routes.tsx';
-import { BottomNavigation } from './BottomNavigation';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import AxiosProvider from '@/context/AxiosProvider';
+import { ProtectedRoute } from '@/navigation/ProtectedRoute';
+import { RegisterPage } from '@/pages/RegisterPage';
 
 export const App: FC = () => {
     const lp = useLaunchParams();
@@ -61,12 +62,16 @@ export const App: FC = () => {
                 >
                     <Router location={location} navigator={reactNavigator}>
                         <Routes>
-                            {routes.map((route) => (
-                                <Route key={route.path} {...route} />
-                            ))}
+                            {/* Protected routes */}
+                            <Route element={<ProtectedRoute />}>
+                                {routes.map((route) => (
+                                    <Route key={route.path} {...route} />
+                                ))}
+                            </Route>
+                            {/* Not protected */}
+                            <Route path='/register' element={<RegisterPage />} />
                             <Route path='*' element={<Navigate to='/' />} />
                         </Routes>
-                        <BottomNavigation />
                     </Router>
                 </AppRoot>
             </AxiosProvider>

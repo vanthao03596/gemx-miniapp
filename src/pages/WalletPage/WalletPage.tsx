@@ -12,6 +12,14 @@ import {
 import { Avatar, Badge, Cell, Divider, IconButton, Section, Text, Title } from '@telegram-apps/telegram-ui';
 import React from 'react';
 import styles from './WalletPage.module.scss';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosAuth from '@/hooks/useAxiosAuth';
+
+interface WalletBalanceResponse {
+    gxp: number;
+    gp: number;
+    gemx: number;
+}
 
 const actions = [
     {
@@ -46,31 +54,43 @@ const actions = [
     },
 ];
 
-const balances = [
-    {
-        image: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png',
-        name: 'GXP',
-        description: 'GEMX POINT',
-        amount: 20,
-        link: '/wallet/history?unit=gpx',
-    },
-    {
-        image: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png',
-        name: 'GP',
-        description: 'GEMX PAY',
-        amount: 5,
-        link: '/wallet/history?unit=gp',
-    },
-    {
-        image: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png',
-        name: 'GEMX',
-        description: 'GEMX TOKEN',
-        amount: 10,
-        link: '/wallet/history?unit=gemx',
-    },
-];
-
 const WalletPage = () => {
+    const axiosAuth = useAxiosAuth();
+
+    const getBalance = async () => {
+        const res = await axiosAuth.get<WalletBalanceResponse>('/wallet/balance');
+        return res.data;
+    };
+
+    const { data: dataBalances } = useQuery({
+        queryKey: ['get-balance'],
+        queryFn: getBalance,
+    });
+
+    const balances = [
+        {
+            image: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png',
+            name: 'GXP',
+            description: 'GEMX POINT',
+            amount: dataBalances?.gxp,
+            link: '/wallet/history?unit=gpx',
+        },
+        {
+            image: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png',
+            name: 'GP',
+            description: 'GEMX PAY',
+            amount: dataBalances?.gp,
+            link: '/wallet/history?unit=gp',
+        },
+        {
+            image: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png',
+            name: 'GEMX',
+            description: 'GEMX TOKEN',
+            amount: dataBalances?.gemx,
+            link: '/wallet/history?unit=gemx',
+        },
+    ];
+
     return (
         <div className={styles.container}>
             {/* Title */}

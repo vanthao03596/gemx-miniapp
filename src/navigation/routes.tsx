@@ -1,7 +1,6 @@
 import Svg from '@/icon/svg';
 import { HomePage } from '@/pages/HomePage';
 import { LaunchParamsPage } from '@/pages/LaunchParamsPage/LaunchParamsPage.tsx';
-import { RegisterPage } from '@/pages/RegisterPage';
 import { ThemeParamsPage } from '@/pages/ThemeParamsPage/ThemeParamsPage.tsx';
 import { WalletHistoryPage } from '@/pages/WalletHistoryPage';
 import { WalletPage } from '@/pages/WalletPage';
@@ -31,12 +30,6 @@ export const routes: Route[] = [
         path: '/wallet/history',
         Component: WalletHistoryPage,
         title: 'Wallet History',
-        icon: <Svg src='/icons/home.svg' className='icon' />,
-    },
-    {
-        path: '/register',
-        Component: RegisterPage,
-        title: 'Register',
         icon: <Svg src='/icons/home.svg' className='icon' />,
     },
     {

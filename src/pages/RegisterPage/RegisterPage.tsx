@@ -1,56 +1,82 @@
-import React from 'react';
-import styles from './RegisterPage.module.scss';
-import { useLaunchParams } from '@tma.js/sdk-react';
+import { CustomHeader } from '@/components/CustomHeader';
 import useAxiosAuth from '@/hooks/useAxiosAuth';
-import { useQuery } from '@tanstack/react-query';
-
-interface GetUserInfoResponse {
-    user: {
-        id: number;
-        name: string;
-        email: string;
-        email_verified_at: string;
-        created_at: Date;
-        updated_at: Date;
-        type: string;
-        address: string;
-        ref_address: string;
-        image_path: string;
-        is_vip: number;
-        follower: number;
-        following: number;
-        can_create_report: number;
-        invite_earned: number;
-        telegram_id: number;
-        telegram_username: string;
-        nonce: string;
-        gas_power: number;
-        gas_rate_lvl: number;
-        last_claim_gxp: Date;
-        gas_price: number;
-    };
-}
+import { Icon24Close } from '@/icon/icon';
+import { useMutation } from '@tanstack/react-query';
+import { Button, Input, List, Tappable, Text } from '@telegram-apps/telegram-ui';
+import { AxiosError } from 'axios';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styles from './RegisterPage.module.scss';
 
 const RegisterPage = () => {
+    const navigate = useNavigate();
     const axiosAuth = useAxiosAuth();
-    const initDataRaw = useLaunchParams().initDataRaw;
 
-    const getInfo = async () => {
-        const res = await axiosAuth.post<GetUserInfoResponse>('/user/info');
+    const [address, setAddress] = useState<string>('');
+    const [error, setError] = useState<string>('');
+
+    const updateUser = async (address: string) => {
+        const res = await axiosAuth.post('/user/info', { address });
         return res.data;
     };
 
-    const { data: userInfo } = useQuery({
-        queryKey: ['get-info'],
-        queryFn: getInfo,
+    const mutation = useMutation({
+        mutationKey: ['update-user'],
+        mutationFn: updateUser,
+        onSuccess: () => {
+            navigate('/');
+        },
+        onError: (error) => {
+            if (error instanceof AxiosError) {
+                setError(error.response?.data.message);
+            }
+        },
     });
 
+    const handleUpdateUser = () => {
+        mutation.mutate(address);
+    };
+
+    const handleChangeAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setAddress(e.target.value);
+        setError('');
+    };
+
+    const handleClearAddress = () => {
+        setAddress('');
+        setError('');
+    };
+
     return (
-        <div>
-            {/* Init data */}
-            <div className={styles.initDataRaw}>{initDataRaw}</div>
-            <div>Info</div>
-            <div>{userInfo?.user.follower}</div>
+        <div className={styles.container}>
+            <CustomHeader title="Let's start" />
+            <List>
+                <Input
+                    status={error ? 'error' : 'focused'}
+                    header='Wallet Address'
+                    placeholder={error ? error : '0x . . .'}
+                    value={address}
+                    onChange={handleChangeAddress}
+                    after={
+                        <Tappable
+                            Component='div'
+                            style={{
+                                display: 'flex',
+                            }}
+                            onClick={handleClearAddress}
+                        >
+                            <Icon24Close />
+                        </Tappable>
+                    }
+                />
+                {error && <Text className={styles.error}>{error}</Text>}
+            </List>
+
+            <div className={`${styles.submit} ${styles.center}`}>
+                <Button loading={mutation.isPending} disabled={!address} onClick={handleUpdateUser}>
+                    Continue
+                </Button>
+            </div>
         </div>
     );
 };

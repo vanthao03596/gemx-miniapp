@@ -82,3 +82,25 @@ export function MaterialSymbolsLightChevronRightRounded(props: SVGProps<SVGSVGEl
         </svg>
     );
 }
+
+export function MaterialSymbolsLightArrowBackIosNewRounded(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24' {...props}>
+            <path
+                fill='currentColor'
+                d='m8.82 12l7.715 7.716q.22.22.218.528t-.224.529q-.221.221-.529.221t-.529-.221L7.83 13.136q-.243-.242-.354-.54q-.112-.298-.112-.596t.112-.596t.354-.54l7.64-7.644q.221-.221.532-.218q.31.003.531.224t.222.529t-.222.528z'
+            ></path>
+        </svg>
+    );
+}
+
+export function MaterialSymbolsCheckRounded(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24' {...props}>
+            <path
+                fill='currentColor'
+                d='m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z'
+            ></path>
+        </svg>
+    );
+}

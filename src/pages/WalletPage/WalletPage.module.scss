@@ -1,11 +1,4 @@
 .container {
-    margin-top: 1rem;
-
-    .title {
-        text-align: center;
-        text-transform: uppercase;
-    }
-
     .action {
         margin-top: 1rem;
 
@@ -34,20 +27,21 @@
         margin-top: 2rem;
 
         .title {
-            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--tg-theme-accent-text-color);
+        }
+
+        .section {
+            margin: 1rem 1rem 0;
+            border-radius: 0.5rem;
+            overflow: hidden;
         }
 
         .cell {
-            padding: 0.25rem 1rem;
-
             .badge {
                 display: flex;
                 align-items: center;
 
-                .number {
-
-                }
-                
                 .chevron {
                     color: var(--tg-theme-hint-color);
                 }

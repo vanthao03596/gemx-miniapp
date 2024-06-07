@@ -23,3 +23,7 @@ export interface User {
   gas_price: number;
   mint_gxp_per_second: number;
 }
+
+export interface LastClaimData {
+  last_claim: Date | null;
+}

@@ -11,13 +11,31 @@
 
   .buttonContainer {
     position: absolute;
-    top: calc(100% - 20px);
+    top: calc(100% - 24px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
 
     button {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      padding: 10px 16px;
+      border-radius: radius.$roundedLg;
+      border: none;
+      font-size: gt.$fontSize16;
+      line-height: gt.$lineHeight24;
+      font-weight: 500;
+      background-color: var(--tg-theme-accent-text-color);
+      color: #fff;
+
+      &:disabled {
+        opacity: 0.5;
+      }
     }
   }
 }

@@ -1,17 +1,46 @@
+import { Mine } from "@/components/Mine";
 import { UserInfo } from "@/components/UserInfo";
+import useAxiosAuth from "@/hooks/useAxiosAuth";
 import Svg from "@/icon/svg";
+import { User } from "@/lib/types";
+import { useQuery } from "@tanstack/react-query";
 import { Button, IconButton, Modal } from "@telegram-apps/telegram-ui";
 import { ModalClose } from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose";
 import { ModalHeader } from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
 import styles from "./homePage.module.scss";
-import { Mine } from "@/components/Mine";
+
+type Response<T> = {
+  user: T;
+};
 
 export const HomePage = (): JSX.Element => {
+  const axiosAuth = useAxiosAuth();
+
+  const fetchLastClaim = async () => {
+    const { data } = await axiosAuth.get("/last-claim-reward");
+    return data;
+  };
+
+  const fetchAccount = async () => {
+    const { data } = await axiosAuth.get<User>("/user/info");
+    return data;
+  };
+
+  const { data: lastClaimData } = useQuery({
+    queryKey: ["last-claim"],
+    queryFn: () => fetchLastClaim(),
+  });
+
+  const { data: accountData } = useQuery({
+    queryKey: ["account"],
+    queryFn: () => fetchAccount(),
+  });
+
   return (
     <div className={styles.homePage}>
       <UserInfo username="Hung nguyen" level={1} />
       <div className={styles.reward}>
-        <h2>1. 00 GEM</h2>
+        <h2>1.00 GEM</h2>
         <div>
           <p>MỖI GIỜ</p>
           <Modal
@@ -40,7 +69,7 @@ export const HomePage = (): JSX.Element => {
           </Modal>
         </div>
       </div>
-      <Mine gemInHour={1} />
+      <Mine gemInHour={accountData?.gas_rate_lvl as number} />
     </div>
   );
 };

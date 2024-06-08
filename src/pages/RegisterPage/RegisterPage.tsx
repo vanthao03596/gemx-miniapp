@@ -33,7 +33,10 @@ const RegisterPage = () => {
     mutationFn: updateUser,
     onSuccess: async () => {
       await queyrClient.invalidateQueries({ queryKey: ["get-user"] });
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 200)
+     
     },
     onError: (error) => {
       if (error instanceof AxiosError) {
@@ -42,7 +45,7 @@ const RegisterPage = () => {
     },
   });
 
-  const handleUpdateUser = () => {
+  const handleUpdateUser = async () => {
     mutation.mutate(address);
   };
 

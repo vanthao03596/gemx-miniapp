@@ -1,7 +1,7 @@
 import { BottomNavigation } from "@/components/BottomNavigation";
 import useAxiosAuth from "@/hooks/useAxiosAuth";
 import { useQuery } from "@tanstack/react-query";
-import { useInitData, useInitDataRaw } from "@tma.js/sdk-react";
+import { useInitDataRaw } from "@tma.js/sdk-react";
 // import { useLaunchParams } from "@tma.js/sdk-react";
 import { Navigate, Outlet } from "react-router-dom";
 

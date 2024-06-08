@@ -1,4 +1,3 @@
-import { ChangeEvent } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 export const DEFAULT_PAGE = 1;
@@ -10,7 +9,7 @@ const usePageSize = () => {
 
     const page = Number(searchParams.get('page')) > 0 ? Number(searchParams.get('page')) : DEFAULT_PAGE;
 
-    const handleChangePageSize = (event: ChangeEvent<unknown>, page: number = DEFAULT_PAGE) => {
+    const handleChangePageSize = (page: number) => {
         const params = new URLSearchParams(searchParams);
         params.set('page', page.toString());
         navigate(`${pathname}?${params.toString()}`);

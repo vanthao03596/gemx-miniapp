@@ -1,13 +1,14 @@
 import { CustomHeader } from '@/components/CustomHeader';
-import { MaterialSymbolsCheckRounded } from '@/icon/icon';
-import { Badge, Cell, Pagination, Section, Text, Title } from '@telegram-apps/telegram-ui';
-import { useSearchParams } from 'react-router-dom';
-import styles from './WalletHistoryPage.module.scss';
+import CustomPagination from '@/components/CustomPagination/CustomPagination';
 import useAxiosAuth from '@/hooks/useAxiosAuth';
-import { useQuery } from '@tanstack/react-query';
-import dayjs from 'dayjs';
 import usePageSize from '@/hooks/usePageSize';
+import { MaterialSymbolsCheckRounded } from '@/icon/icon';
+import { useQuery } from '@tanstack/react-query';
+import { Badge, Cell, Section, Text, Title } from '@telegram-apps/telegram-ui';
+import dayjs from 'dayjs';
+import { useSearchParams } from 'react-router-dom';
 import { WalletBalanceResponse } from '../WalletPage/WalletPage';
+import styles from './WalletHistoryPage.module.scss';
 
 interface TransactionsData {
     id: number;
@@ -115,10 +116,10 @@ const WalletHistoryPage = () => {
             {/* Pagination */}
             {dataTransactions && (
                 <div className={styles.pagination}>
-                    <Pagination
-                        page={dataTransactions.current_page}
-                        count={dataTransactions.last_page}
-                        onChange={handleChangePageSize}
+                    <CustomPagination
+                        pageNumber={dataTransactions.current_page}
+                        totalPages={dataTransactions.last_page}
+                        handlePageChange={handleChangePageSize}
                     />
                 </div>
             )}

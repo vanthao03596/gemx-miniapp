@@ -12,7 +12,7 @@ export const UserInfo = ({
   <>
     <Cell
       before={<Avatar size={48} src={src} />}
-      subtitle={`Cấp độ ${level}`}
+      subtitle={`Level ${level}`}
       style={{ padding: 0 }}
     >
       {username}

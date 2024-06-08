@@ -47,7 +47,8 @@ export const Mine = ({
         setIsStart(false);
       }
     }
-  }, [lastClaim, start, restart, time]);
+    setGem(lastClaim ? time * gemInSecond : 0);
+  }, [lastClaim, start, restart, time, gemInSecond]);
 
   const createLastClaimMuation = useMutation({
     mutationFn: createLastClaim,
@@ -61,8 +62,8 @@ export const Mine = ({
   });
 
   useInterval(() => {
-    setGem(lastClaim ? time * gemInSecond : gem + gemInSecond * 3);
-  }, 3000);
+    setGem(gem + gemInSecond);
+  }, 1000);
 
   const formatTime = (time: number) => {
     return ("0" + time).slice(-2);

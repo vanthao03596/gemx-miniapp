@@ -1,8 +1,7 @@
 import { BottomNavigation } from "@/components/BottomNavigation";
 import useAxiosAuth from "@/hooks/useAxiosAuth";
 import { useQuery } from "@tanstack/react-query";
-import { useInitDataRaw } from "@tma.js/sdk-react";
-// import { useLaunchParams } from "@tma.js/sdk-react";
+import { useLaunchParams } from "@tma.js/sdk-react";
 import { Navigate, Outlet } from "react-router-dom";
 
 interface GetUserInfoResponse {
@@ -34,9 +33,9 @@ interface GetUserInfoResponse {
 
 const ProtectedRoute = () => {
   const axiosAuth = useAxiosAuth();
-  const initData = useInitDataRaw();
-  console.log(initData)
-  //   const lp = useLaunchParams();
+const lp = useLaunchParams();
+  console.log(lp.initDataRaw)
+
 
   const getUser = async () => {
     const res = await axiosAuth.get<GetUserInfoResponse>("/user/info");

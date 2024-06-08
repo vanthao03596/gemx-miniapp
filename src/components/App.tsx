@@ -69,13 +69,13 @@ export const App: FC = () => {
                     <Router location={location} navigator={reactNavigator}>
                         <Routes>
                             {/* Protected routes */}
-                            <Route element={<ProtectedRoute />}>
+                            <Route Component={ProtectedRoute}>
                                 {routes.map((route) => (
                                     <Route key={route.path} {...route} />
                                 ))}
                             </Route>
                             {/* Not protected */}
-                            <Route path='/register' element={<RegisterPage />} />
+                            <Route path='/register' Component={RegisterPage} />
                             <Route path='*' element={<Navigate to='/' />} />
                         </Routes>
                     </Router>

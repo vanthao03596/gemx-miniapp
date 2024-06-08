@@ -1,45 +1,71 @@
 import { CustomHeader } from '@/components/CustomHeader';
 import { MaterialSymbolsCheckRounded } from '@/icon/icon';
-import { Badge, Cell, Section, Text, Title } from '@telegram-apps/telegram-ui';
+import { Badge, Cell, Pagination, Section, Text, Title } from '@telegram-apps/telegram-ui';
 import { useSearchParams } from 'react-router-dom';
 import styles from './WalletHistoryPage.module.scss';
+import useAxiosAuth from '@/hooks/useAxiosAuth';
+import { useQuery } from '@tanstack/react-query';
+import dayjs from 'dayjs';
+import usePageSize from '@/hooks/usePageSize';
+import { WalletBalanceResponse } from '../WalletPage/WalletPage';
 
-const histories = [
-    {
-        title: 'Daily reward',
-        date: '11:05 24/05/2024',
-        amount: 20,
-        unit: 'GEMXXXXX',
-    },
-    {
-        title: 'Daily reward',
-        date: '11:05 24/05/2024',
-        amount: 20,
-        unit: 'GEM',
-    },
-    {
-        title: 'Daily reward',
-        date: '11:05 24/05/2024',
-        amount: 20,
-        unit: 'GEM',
-    },
-    {
-        title: 'Daily reward',
-        date: '11:05 24/05/2024',
-        amount: 20,
-        unit: 'GEM',
-    },
-    {
-        title: 'Daily reward',
-        date: '11:05 24/05/2024',
-        amount: 20,
-        unit: 'GEM',
-    },
-];
+interface TransactionsData {
+    id: number;
+    wallet_id: number;
+    transactionable_type: string;
+    transactionable_id: number;
+    amount: string;
+    extra_type: string;
+    created_at: Date;
+    updated_at: Date;
+}
+
+interface TransactionsResponse {
+    current_page: number;
+    data: TransactionsData[];
+    first_page_url: string;
+    from: number;
+    last_page: number;
+    last_page_url: string;
+    links: {
+        url?: string;
+        label: string;
+        active: boolean;
+    }[];
+    next_page_url?: string;
+    path: string;
+    per_page: number;
+    prev_page_url?: string;
+    to: number;
+    total: number;
+}
 
 const WalletHistoryPage = () => {
     const [searchParams] = useSearchParams();
     const unit = searchParams.get('unit')?.trim();
+    const { page, handleChangePageSize } = usePageSize();
+    const axiosAuth = useAxiosAuth();
+
+    const getBalance = async () => {
+        const res = await axiosAuth.get<WalletBalanceResponse>('/wallet/balance');
+        return res.data;
+    };
+
+    const { data: dataBalances } = useQuery({
+        queryKey: ['get-balance'],
+        queryFn: getBalance,
+    });
+
+    const getTransactions = async () => {
+        const url = `wallet/transaction?wallet=${unit}&page=${page}`;
+        const res = await axiosAuth.get<TransactionsResponse>(url);
+        return res.data;
+    };
+
+    const { data: dataTransactions } = useQuery({
+        queryKey: ['get-transactions', unit, page],
+        queryFn: getTransactions,
+    });
 
     return (
         <div className={styles.container}>
@@ -49,9 +75,11 @@ const WalletHistoryPage = () => {
             {/* Balance */}
             {unit && (
                 <div className={styles.balance}>
-                    <Title level='1' weight='2' className={styles.amountText}>
-                        134456
-                    </Title>
+                    {dataBalances && (
+                        <Title level='1' weight='2' className={styles.amountText}>
+                            {dataBalances[unit as keyof WalletBalanceResponse]}
+                        </Title>
+                    )}
 
                     <Title level='2' weight='2' caps className={styles.historyText}>
                         History
@@ -61,7 +89,7 @@ const WalletHistoryPage = () => {
 
             {/* History */}
             <Section className={styles.section}>
-                {histories.map((item, index) => (
+                {dataTransactions?.data.map((item, index) => (
                     <Cell
                         after={
                             <div className={styles.cellAfter}>
@@ -69,18 +97,31 @@ const WalletHistoryPage = () => {
                                     <Badge type='number' className={styles.amount}>
                                         +{item.amount}
                                     </Badge>
-                                    <Text className={styles.unit}>{item.unit}</Text>
+                                    <Text className={styles.unit} caps>
+                                        {unit}
+                                    </Text>
                                 </div>
                             </div>
                         }
                         before={<MaterialSymbolsCheckRounded fontSize={24} className={styles.icon} />}
-                        description={item.date}
+                        description={dayjs(item.created_at).format('HH:mm MM/DD/YYYY ')}
                         key={index}
                     >
-                        <Text>{item.title}</Text>
+                        <Text caps>{item.transactionable_type}</Text>
                     </Cell>
                 ))}
             </Section>
+
+            {/* Pagination */}
+            {dataTransactions && (
+                <div className={styles.pagination}>
+                    <Pagination
+                        page={dataTransactions.current_page}
+                        count={dataTransactions.last_page}
+                        onChange={handleChangePageSize}
+                    />
+                </div>
+            )}
         </div>
     );
 };

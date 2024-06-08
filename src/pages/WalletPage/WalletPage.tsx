@@ -15,7 +15,7 @@ import styles from './WalletPage.module.scss';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosAuth from '@/hooks/useAxiosAuth';
 
-interface WalletBalanceResponse {
+export interface WalletBalanceResponse {
     gxp: number;
     gp: number;
     gemx: number;
@@ -73,7 +73,7 @@ const WalletPage = () => {
             name: 'GXP',
             description: 'GEMX POINT',
             amount: dataBalances?.gxp,
-            link: '/wallet/history?unit=gpx',
+            link: '/wallet/history?unit=gxp',
         },
         {
             image: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png',
@@ -120,7 +120,7 @@ const WalletPage = () => {
                 <Section className={styles.section}>
                     {balances.map((item, index) => (
                         <React.Fragment key={index}>
-                            <Link to={item.link}>
+                            <Link to={item.link} state={{ amount: item.amount }}>
                                 <Cell
                                     after={
                                         <div className={styles.badge}>

@@ -1,3 +1,4 @@
+import { AppRoot } from '@telegram-apps/telegram-ui';
 import { useIntegration } from '@tma.js/react-router-integration';
 import {
     bindMiniAppCSSVars,
@@ -9,15 +10,22 @@ import {
     useThemeParams,
     useViewport,
 } from '@tma.js/sdk-react';
-import { AppRoot } from '@telegram-apps/telegram-ui';
 import { type FC, useEffect, useMemo } from 'react';
 import { Navigate, Route, Router, Routes } from 'react-router-dom';
 
-import { routes } from '@/navigation/routes.tsx';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import AxiosProvider from '@/context/AxiosProvider';
 import { ProtectedRoute } from '@/navigation/ProtectedRoute';
+import { routes } from '@/navigation/routes.tsx';
 import { RegisterPage } from '@/pages/RegisterPage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            staleTime: 10000,
+        },
+    },
+});
 
 export const App: FC = () => {
     const lp = useLaunchParams();
@@ -50,8 +58,6 @@ export const App: FC = () => {
         navigator.attach();
         return () => navigator.detach();
     }, [navigator]);
-
-    const queryClient = new QueryClient();
 
     return (
         <QueryClientProvider client={queryClient}>

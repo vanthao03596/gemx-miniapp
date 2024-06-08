@@ -12,11 +12,13 @@ export const Mine = ({
   lastClaim,
   address,
   isLoading,
+  gasPower,
 }: {
   gemInSecond: number;
   lastClaim: Date | null;
   address: string;
   isLoading?: boolean;
+  gasPower: number;
 }) => {
   const axiosAuth = useAxiosAuth();
 
@@ -40,9 +42,10 @@ export const Mine = ({
       start();
       setIsStart(true);
 
-      // if (time >= 6 * 3600) {
-      //   start();
-      // }
+      if (time >= 24 * 3600) {
+        stop();
+        setIsStart(false);
+      }
     }
   }, [lastClaim, start, restart, time]);
 
@@ -74,24 +77,21 @@ export const Mine = ({
   return (
     <>
       <div className={[styles.mineContainer, styles.boxContainer].join(" ")}>
-        {/* <div>{dayjs.utc(lastClaim).toISOString()}</div>
-        <>{time}</> */}
         {isLoading ? (
           <Spinner size="m" />
         ) : (
           <>
-            <h2>{isStart ? gem.toFixed(4) : "0"} GEM</h2>
+            <h2>{isStart && !isLoading ? gem.toFixed(4) : "0"} GXP</h2>
             <p style={{ display: isStart && !isLoading ? "block" : "none" }}>
               {formatTime(hours)}h {formatTime(minutes)}m {formatTime(seconds)}s
             </p>
           </>
         )}
-        <p>
-          {isStart
-            ? "Thời gian nhận phần thưởng tiếp theo"
-            : "Phần thưởng đã sẵn sàng"}
+        <p className={styles.fontOrbitron}>
+          {isStart ? "Time until the next reward" : "Reward is ready"}
         </p>
         <div className={styles.buttonContainer}>
+          <div className={styles.border} />
           <button
             onClick={handleStart}
             style={{ minWidth: "200px" }}
@@ -99,20 +99,21 @@ export const Mine = ({
           >
             {lastClaim
               ? time >= 6 * 3600
-                ? "Nhận"
-                : "Đang khai thác"
-              : "Bắt đầu khai thác"}
+                ? "Claim"
+                : "Mining..."
+              : "Start mining"}
           </button>
+          <div className={styles.border} />
         </div>
       </div>
       <div className={styles.descContainer}>
         <div className={styles.boxContainer}>
-          <h4>{Number(gemInSecond * 3600).toFixed(2)} GEM</h4>
-          <p>Tốc độ khai thác cơ bản</p>
+          <h4>{Number(gemInSecond * 3600).toFixed(2)} GXP</h4>
+          <p className={styles.fontOrbitron}>Basic Rate</p>
         </div>
         <div className={styles.boxContainer}>
-          <h4>0%</h4>
-          <p>Hệ số Booster</p>
+          <h4>{gasPower}%</h4>
+          <p className={styles.fontOrbitron}>Boooster</p>
         </div>
       </div>
     </>

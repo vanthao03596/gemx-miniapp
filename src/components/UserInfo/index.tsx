@@ -1,12 +1,12 @@
 import { Avatar, Cell } from "@telegram-apps/telegram-ui";
 
 export const UserInfo = ({
-  src = "https://avatars.githubusercontent.com/u/84640980?v=4",
+  src,
   username,
   level,
 }: {
   src?: string;
-  username: string;
+  username?: string;
   level: number;
 }) => (
   <>

@@ -8,6 +8,7 @@ import { Button, IconButton, Modal } from "@telegram-apps/telegram-ui";
 import { ModalClose } from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose";
 import { ModalHeader } from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
 import styles from "./homePage.module.scss";
+import { truncateEthAddress } from "@/utils/truncateEthAddress";
 
 type Response<T> = {
   user: T;
@@ -38,11 +39,23 @@ export const HomePage = (): JSX.Element => {
 
   return (
     <div className={styles.homePage}>
-      <UserInfo username="Hung nguyen" level={1} />
+      <UserInfo
+        username={
+          accountData?.user.name
+            ? accountData.user.name
+            : truncateEthAddress(accountData?.user.address)
+        }
+        level={accountData?.user.gas_rate_lvl as number}
+        src={
+          accountData?.user.image_path
+            ? accountData.user.image_path
+            : "https://avatars.githubusercontent.com/u/84640980?v=4"
+        }
+      />
       <div className={styles.reward}>
-        {accountData && <h2>{accountData.user.gas_rate_lvl.toFixed(2)} GEM</h2>}
+        {accountData && <h2>{accountData.user.gas_price.toFixed(2)} GXP</h2>}
         <div>
-          <p>MỖI GIỜ</p>
+          <p>EVERY HOUR</p>
           <Modal
             header={<ModalHeader />}
             trigger={
@@ -52,31 +65,29 @@ export const HomePage = (): JSX.Element => {
             }
           >
             <div className={styles.modalContent}>
-              <h4>Quy tắc khai thác</h4>
+              <h4>Mining Rules</h4>
               <ul>
-                <li>Người dùng có thể nhận thưởng mỗi 12 giờ một lần</li>
+                <li>User can recieve rewards once every 6 hours</li>
                 <li>
-                  Quá trình khai thác sẽ tự động dừng nếu trong vòng 24h người
-                  dùng không nhận thưởng
+                  The mining process will automatically stop if users do not
+                  receive rewards within 24 hours
                 </li>
               </ul>
               <ModalClose>
                 <Button style={{ width: "100%" }} size="m" mode="bezeled">
-                  Đã hiểu
+                  Got it
                 </Button>
               </ModalClose>
             </div>
           </Modal>
         </div>
       </div>
-      {/* {lastClaimData && (
-        
-      )} */}
       <Mine
         gemInSecond={Number(accountData?.user.mint_gxp_per_second)}
         lastClaim={lastClaimData?.last_claim as Date}
         address={String(accountData?.user.address)}
         isLoading={lastClaimLoading}
+        gasPower={accountData?.user.gas_power as number}
       />
     </div>
   );

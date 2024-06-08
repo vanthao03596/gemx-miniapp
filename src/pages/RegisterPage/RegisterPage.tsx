@@ -56,7 +56,7 @@ const RegisterPage = () => {
     mutationKey: ["update-user"],
     mutationFn: updateUser,
     onSuccess: async (data) => {
-        queyrClient.setQueryData(['get-user'], data.user)
+        queyrClient.setQueryData(['get-user'], data)
     //   await queyrClient.invalidateQueries({ queryKey: ["get-user"] });
       setTimeout(() => {
         navigate("/");

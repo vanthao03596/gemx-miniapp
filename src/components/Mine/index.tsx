@@ -39,6 +39,10 @@ export const Mine = ({
       restart();
       start();
       setIsStart(true);
+
+      // if (time >= 6 * 3600) {
+      //   start();
+      // }
     }
   }, [lastClaim, start, restart, time]);
 
@@ -70,7 +74,8 @@ export const Mine = ({
   return (
     <>
       <div className={[styles.mineContainer, styles.boxContainer].join(" ")}>
-        <>{time}</>
+        {/* <div>{dayjs.utc(lastClaim).toISOString()}</div>
+        <>{time}</> */}
         {isLoading ? (
           <Spinner size="m" />
         ) : (

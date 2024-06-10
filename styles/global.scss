@@ -7,6 +7,7 @@ body {
   position: relative;
   padding: 0;
   margin: 0;
+  margin-bottom: 50px;
   font-family: typography.$fontFamily;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -36,4 +37,11 @@ p {
   height: 16px;
   color: var(--tg-secondary-hint-color);
   opacity: 0.8;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

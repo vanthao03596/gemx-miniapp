@@ -1,0 +1,104 @@
+@use "../../../styles/radius.scss";
+@use "../../../styles//typography/global-tokens.scss" as gt;
+
+.researchCardContainer {
+  background-color: var(--tg-bg-color);
+  border-radius: radius.$roundedLg;
+  overflow: hidden;
+  display: block;
+
+  .researchCardContent {
+    display: flex;
+    flex-direction: column;
+
+    .authorContainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .author {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        & > div {
+          width: 20px;
+          height: 20px;
+          border-radius: radius.$roundedCircle;
+          overflow: hidden;
+
+          & > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        p {
+          font-size: gt.$fontSize14;
+          line-height: gt.$lineHeight20;
+          font-weight: 500;
+          color: var(--tg-theme-hint-color);
+        }
+      }
+
+      .coin {
+        display: flex;
+        align-items: center;
+
+        & > div {
+          width: 16px;
+          height: 16px;
+          border-radius: radius.$roundedCircle;
+          overflow: hidden;
+          background-color: var(--tg-theme-link-color);
+          margin-right: -4px;
+
+          & > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    .imageContainer {
+      width: 100%;
+      aspect-ratio: 2 / 1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .infoContainer {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .title {
+        font-size: gt.$fontSize16;
+        line-height: gt.$lineHeight24;
+        font-weight: 500;
+        color: var(--tg-theme-link-color);
+      }
+
+      .desc {
+        font-size: gt.$fontSize14;
+        line-height: gt.$lineHeight20;
+        font-weight: normal;
+        color: var(--tg-theme-hint-color);
+      }
+
+      .time {
+        font-size: gt.$fontSize12;
+        line-height: gt.$lineHeight16;
+        font-weight: normal;
+        color: var(--tg-theme-subtitle-text-color);
+      }
+    }
+  }
+}

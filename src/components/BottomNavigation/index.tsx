@@ -2,7 +2,7 @@ import { routes } from '@/navigation/routes';
 import { Tabbar } from '@telegram-apps/telegram-ui';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const navItems = ['/', '/wallet', '/register'];
+const navItems = ['/', '/wallet', '/research', '/quest', '/user'];
 
 export const BottomNavigation = () => {
     const { pathname } = useLocation();

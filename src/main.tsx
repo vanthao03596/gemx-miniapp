@@ -1,7 +1,7 @@
-import ReactDOM from "react-dom/client";
-import { mockTelegramEnv, parseInitData, retrieveLaunchParams } from "@tma.js/sdk-react";
 import { Root } from "@/components/Root";
 import "@telegram-apps/telegram-ui/dist/styles.css";
+import { mockTelegramEnv, parseInitData } from "@tma.js/sdk-react";
+import ReactDOM from "react-dom/client";
 import "../styles/global.scss";
 
 // This line of code allows us to safely launch the application even outside
@@ -9,8 +9,8 @@ import "../styles/global.scss";
 // production.
 if (import.meta.env.DEV) {
   try {
-    retrieveLaunchParams();
-    // throw new Error();
+    // retrieveLaunchParams();
+    throw new Error();
   } catch {
     const initDataRaw = new URLSearchParams([
       [

@@ -1,6 +1,7 @@
 import usePagination from '@/hooks/usePagination';
-import { Button } from '@telegram-apps/telegram-ui';
+import { Button, Text } from '@telegram-apps/telegram-ui';
 import styles from './CustomPagination.module.scss';
+import { MaterialSymbolsArrowBackIosNewRounded, MaterialSymbolsArrowForwardIosRounded } from '@/icon/icon';
 
 interface CustomPaginationProps {
     handlePageChange: (page: number) => void;
@@ -30,7 +31,7 @@ const CustomPagination = (props: CustomPaginationProps) => {
         <div className={styles.container}>
             {/* Arrow left*/}
             <div className={styles.arrow} onClick={handleClickPrevious}>
-                {/* <MaterialSymbolsArrowBackIosNewRounded /> */} Back
+                <MaterialSymbolsArrowBackIosNewRounded />
             </div>
 
             {/* Page number */}
@@ -38,22 +39,22 @@ const CustomPagination = (props: CustomPaginationProps) => {
                 {listPagination?.map((item, index) => {
                     if (Number(item) === pageNumber)
                         return (
-                            <Button key={index} mode='bezeled' onClick={() => handlePageChange(Number(item))}>
+                            <Button key={index} onClick={() => handlePageChange(Number(item))}>
                                 {item}
                             </Button>
                         );
 
                     return (
-                        <Button key={index} mode='plain' onClick={() => handlePageChange(Number(item))}>
+                        <Text onClick={() => handlePageChange(Number(item))} className={styles.center}>
                             {item}
-                        </Button>
+                        </Text>
                     );
                 })}
             </div>
 
             {/* Arrow right*/}
             <div className={styles.arrow} onClick={handleClickNext}>
-                {/* <MaterialSymbolsArrowForwardIosRounded /> */} Next
+                <MaterialSymbolsArrowForwardIosRounded />
             </div>
         </div>
     );

@@ -1,6 +1,7 @@
 import Svg from '@/icon/svg';
 import { HomePage } from '@/pages/HomePage';
 import { LaunchParamsPage } from '@/pages/LaunchParamsPage/LaunchParamsPage.tsx';
+import { QuestPage } from '@/pages/QuestPage';
 import { ThemeParamsPage } from '@/pages/ThemeParamsPage/ThemeParamsPage.tsx';
 import { WalletHistoryPage } from '@/pages/WalletHistoryPage';
 import { WalletPage } from '@/pages/WalletPage';
@@ -34,7 +35,7 @@ export const routes: Route[] = [
     },
     {
         path: '/quest',
-        Component: WalletPage,
+        Component: QuestPage,
         title: 'Quest',
         icon: <Svg src='/icons/quest.svg' className='icon' />,
     },

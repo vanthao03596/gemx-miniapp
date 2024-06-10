@@ -20,4 +20,11 @@
         cursor: pointer;
         color: var(--client-icon-dark);
     }
+
+    .center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.625rem;
+    }
 }

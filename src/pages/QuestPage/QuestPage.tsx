@@ -4,7 +4,7 @@ import useAxiosAuth from '@/hooks/useAxiosAuth';
 import usePageSize from '@/hooks/usePageSize';
 import { TablerCalendarPause, TablerEyeCheck, TablerGift } from '@/icon/icon';
 import { useQuery } from '@tanstack/react-query';
-import { List, Text } from '@telegram-apps/telegram-ui';
+import { List } from '@telegram-apps/telegram-ui';
 import dayjs from 'dayjs';
 import styles from './QuestPage.module.scss';
 
@@ -56,18 +56,23 @@ interface QuestCardProps {
     title: string;
     endDate: Date;
     rewards: QuestsData['rewards'];
+    slug: string;
 }
 
 const QuestCard = (props: QuestCardProps) => {
-    const { image, views, title, endDate, rewards } = props;
+    const { image, views, title, endDate, rewards, slug } = props;
     const isOngoing = dayjs().utc().isBefore(dayjs(endDate).utc());
     const listRewards = rewards.map((item) => ({
         amount: item.params.total_token_amount / item.params.number_of_rewards,
         unit: item.params.token_type,
     }));
 
+    const handleClickCard = () => {
+        window.open(`https://gemx.io/campaign/${slug}`, 'blank');
+    };
+
     return (
-        <div className={styles.questCard}>
+        <div className={styles.questCard} onClick={handleClickCard}>
             {/* Image */}
             <img src={image} alt='Banner' className={styles.image} />
 
@@ -84,7 +89,7 @@ const QuestCard = (props: QuestCardProps) => {
                 {/* Views */}
                 <div className={`${styles.center} ${styles.views}`}>
                     <TablerEyeCheck />
-                    <Text>{views} views</Text>
+                    <div>{views} views</div>
                 </div>
 
                 {/* Time */}
@@ -92,7 +97,7 @@ const QuestCard = (props: QuestCardProps) => {
                     <TablerCalendarPause />
                     {dayjs(endDate).utc().format('HH:mm DD/MM/YYYY')} (UTC)
                 </div>
-                
+
                 {/* Rewards */}
                 <div className={`${styles.center} ${styles.rewards}`}>
                     <TablerGift />
@@ -142,6 +147,7 @@ const QuestPage = () => {
                         title={item.name}
                         endDate={item.end_date}
                         rewards={item.rewards}
+                        slug={item.slug}
                     />
                 ))}
             </List>

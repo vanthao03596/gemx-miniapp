@@ -6,6 +6,7 @@ import { Spinner } from "@telegram-apps/telegram-ui";
 import { useEffect, useState } from "react";
 import dayjs from "../../lib/dayjs";
 import styles from "./mine.module.scss";
+import { Button } from "antd-mobile";
 
 export const Mine = ({
   gemInSecond,
@@ -93,7 +94,16 @@ export const Mine = ({
         </p>
         <div className={styles.buttonContainer}>
           <div className={styles.border} />
-          <button
+
+          <Button loading={createLastClaimMuation.isPending} onClick={handleStart} style={{ minWidth: "200px" }} color="primary">
+          {lastClaim
+              ? time >= 6 * 3600
+                ? "Claim"
+                : "Mining..."
+              : "Start mining"}
+          </Button>
+
+          {/* <button
             onClick={handleStart}
             style={{ minWidth: "200px" }}
             disabled={Boolean(lastClaim && time < 6 * 3600)}
@@ -103,7 +113,7 @@ export const Mine = ({
                 ? "Claim"
                 : "Mining..."
               : "Start mining"}
-          </button>
+          </button> */}
           <div className={styles.border} />
         </div>
       </div>

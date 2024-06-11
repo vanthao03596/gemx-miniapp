@@ -1,6 +1,6 @@
 import { Root } from "@/components/Root";
 import "@telegram-apps/telegram-ui/dist/styles.css";
-import { mockTelegramEnv, parseInitData } from "@tma.js/sdk-react";
+import { mockTelegramEnv, parseInitData, retrieveLaunchParams } from "@tma.js/sdk-react";
 import ReactDOM from "react-dom/client";
 import "../styles/global.scss";
 
@@ -9,8 +9,8 @@ import "../styles/global.scss";
 // production.
 if (import.meta.env.DEV) {
   try {
-    // retrieveLaunchParams();
-    throw new Error();
+    retrieveLaunchParams();
+    // throw new Error();
   } catch {
     const initDataRaw = new URLSearchParams([
       [

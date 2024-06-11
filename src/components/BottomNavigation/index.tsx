@@ -1,5 +1,5 @@
 import { routes } from '@/navigation/routes';
-import { FixedLayout, Tabbar } from '@telegram-apps/telegram-ui';
+import { Tabbar } from '@telegram-apps/telegram-ui';
 import { useLocation, useNavigate } from 'react-router-dom';
 // import { TabBar as AntTabBar } from 'antd-mobile'
 import styles from './BottomNavigation.module.scss';
@@ -15,7 +15,6 @@ export const BottomNavigation = () => {
     };
 
     return (
-        <FixedLayout>
             <Tabbar className={styles.container}>
                 {routes
                     .filter((item) => navItems.includes(item.path))
@@ -31,6 +30,5 @@ export const BottomNavigation = () => {
                         </Tabbar.Item>
                     ))}
             </Tabbar>
-        </FixedLayout>
     );
 };

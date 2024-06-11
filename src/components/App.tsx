@@ -68,8 +68,6 @@ export const App: FC = () => {
     return (
         <QueryClientProvider client={queryClient}>
             <AxiosProvider>
-                <div>Height: {viewport?.height}</div>
-                <div>Stable height: {viewport?.stableHeight}</div>
                 <AppRoot
                     appearance={miniApp.isDark ? 'dark' : 'light'}
                     platform={['macos', 'ios'].includes(lp.platform) ? 'ios' : 'base'}

@@ -52,7 +52,11 @@ const ResearchPage = () => {
             />
           )
         )}
-        <Link to="https://gemx.io/research">
+        <Link
+          to="https://gemx.io/research"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <p>Figure out more other research articles</p>
           <Svg src="/icons/right-arrow-circle.svg" className="icon" />
         </Link>

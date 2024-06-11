@@ -29,6 +29,8 @@ export const ResearchCard = ({
     <Link
       to={`https://gemx.io/research/${slug}`}
       className={styles.researchCardContainer}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       <div className={styles.researchCardContent}>
         <div className={styles.imageContainer}>

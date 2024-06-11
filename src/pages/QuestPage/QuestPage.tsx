@@ -2,11 +2,11 @@ import { CustomHeader } from '@/components/CustomHeader';
 import CustomPagination from '@/components/CustomPagination/CustomPagination';
 import useAxiosAuth from '@/hooks/useAxiosAuth';
 import usePageSize from '@/hooks/usePageSize';
+import { TablerCalendarPause, TablerEyeCheck, TablerGift } from '@/icon/icon';
 import { useQuery } from '@tanstack/react-query';
-import { Avatar, Badge, Cell, Section, Text } from '@telegram-apps/telegram-ui';
+import { List, Text } from '@telegram-apps/telegram-ui';
 import dayjs from 'dayjs';
 import styles from './QuestPage.module.scss';
-import { MaterialSymbolsVisibilityOutlineRounded } from '@/icon/icon';
 
 interface QuestsData {
     id: number;
@@ -50,7 +50,69 @@ interface QuestsResponse {
     total: number;
 }
 
-const QuestPagePage = () => {
+interface QuestCardProps {
+    image: string;
+    views: number;
+    title: string;
+    endDate: Date;
+    rewards: QuestsData['rewards'];
+}
+
+const QuestCard = (props: QuestCardProps) => {
+    const { image, views, title, endDate, rewards } = props;
+    const isOngoing = dayjs().utc().isBefore(dayjs(endDate).utc());
+    const listRewards = rewards.map((item) => ({
+        amount: item.params.total_token_amount / item.params.number_of_rewards,
+        unit: item.params.token_type,
+    }));
+
+    return (
+        <div className={styles.questCard}>
+            {/* Image */}
+            <img src={image} alt='Banner' className={styles.image} />
+
+            {/* Body */}
+            <div className={styles.body}>
+                {/* Title */}
+                <div className={styles.title}>
+                    <div className={styles.name}>{title}</div>
+                    <div className={`${styles.status} ${isOngoing ? styles.ongoing : styles.finished}`}>
+                        {isOngoing ? 'Ongoing' : 'Finished'}
+                    </div>
+                </div>
+
+                {/* Views */}
+                <div className={`${styles.center} ${styles.views}`}>
+                    <TablerEyeCheck />
+                    <Text>{views} views</Text>
+                </div>
+
+                {/* Time */}
+                <div className={`${styles.center} ${styles.time}`}>
+                    <TablerCalendarPause />
+                    {dayjs(endDate).utc().format('HH:mm DD/MM/YYYY')} (UTC)
+                </div>
+                
+                {/* Rewards */}
+                <div className={`${styles.center} ${styles.rewards}`}>
+                    <TablerGift />
+                    <div className={styles.list}>
+                        {listRewards.map((item, index) => {
+                            return (
+                                <div key={index} className={styles.item}>
+                                    <span>{item.amount} </span>
+                                    <span>{item.unit}</span>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const QuestPage = () => {
     const { page, handleChangePageSize } = usePageSize();
     const axiosAuth = useAxiosAuth();
 
@@ -71,27 +133,18 @@ const QuestPagePage = () => {
             <CustomHeader title={'Quests'} hasBack />
 
             {/* Quests */}
-            <Section className={styles.section}>
+            <List className={styles.listContainer}>
                 {dataQuests?.data.map((item, index) => (
-                    <Cell
-                        after={
-                            <Badge type='number' mode='secondary' className={styles.status}>
-                                {dayjs().utc().isBefore(dayjs(item.end_date).utc()) ? 'Ongoing' : 'Finished'}
-                            </Badge>
-                        }
-                        before={<Avatar size={48} src={item.image} />}
-                        description={
-                            <div className={styles.description}>
-                                <MaterialSymbolsVisibilityOutlineRounded />
-                                <Text>{item.views}</Text>
-                            </div>
-                        }
+                    <QuestCard
                         key={index}
-                    >
-                        <Text caps>{item.name}</Text>
-                    </Cell>
+                        image={item.image}
+                        views={item.views}
+                        title={item.name}
+                        endDate={item.end_date}
+                        rewards={item.rewards}
+                    />
                 ))}
-            </Section>
+            </List>
 
             {/* Pagination */}
             {dataQuests && (
@@ -107,4 +160,4 @@ const QuestPagePage = () => {
     );
 };
 
-export default QuestPagePage;
+export default QuestPage;

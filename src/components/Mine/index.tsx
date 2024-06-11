@@ -95,7 +95,7 @@ export const Mine = ({
         <div className={styles.buttonContainer}>
           <div className={styles.border} />
 
-          <Button loading={createLastClaimMuation.isPending} onClick={handleStart} style={{ minWidth: "200px" }} color="primary">
+          <Button disabled={Boolean(lastClaim && time < 6 * 3600)} loading={createLastClaimMuation.isPending} onClick={handleStart} style={{ minWidth: "200px" }} color="primary">
           {lastClaim
               ? time >= 6 * 3600
                 ? "Claim"

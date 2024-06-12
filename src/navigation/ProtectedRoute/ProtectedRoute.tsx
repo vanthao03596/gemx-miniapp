@@ -3,7 +3,7 @@ import useAxiosAuth from '@/hooks/useAxiosAuth';
 import { useQuery } from '@tanstack/react-query';
 import { useLaunchParams } from '@tma.js/sdk-react';
 import { Navigate, Outlet } from 'react-router-dom';
-// import styles from './style.module.scss';
+import styles from './style.module.scss';
 
 interface GetUserInfoResponse {
     user: {
@@ -48,17 +48,15 @@ const ProtectedRoute = () => {
         // enabled: !!lp.initDataRaw,
     });
 
-    console.log(data);
-
     if (!data) return null;
 
     return data.user ? (
         <>
             {/* <div className={styles.app}> */}
                 {/* <div className={styles.top}></div> */}
-                {/* <div className={styles.body}> */}
+                <div className={styles.body}>
                     <Outlet />
-                {/* </div> */}
+                </div>
                 {/* <div className={styles.bottom}> */}
                     <BottomNavigation />
                 {/* </div> */}

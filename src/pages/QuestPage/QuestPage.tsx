@@ -89,18 +89,20 @@ const QuestCard = (props: QuestCardProps) => {
                 {/* Views */}
                 <div className={`${styles.center} ${styles.views}`}>
                     <TablerEyeCheck />
-                    <div>{views} views</div>
+                    <div>Views: {views}</div>
                 </div>
 
                 {/* Time */}
                 <div className={`${styles.center} ${styles.time}`}>
                     <TablerCalendarPause />
+                    <span>Time end: </span>
                     {dayjs(endDate).utc().format('HH:mm DD/MM/YYYY')} (UTC)
                 </div>
 
                 {/* Rewards */}
                 <div className={`${styles.center} ${styles.rewards}`}>
                     <TablerGift />
+                    <span>Rewards: </span>
                     <div className={styles.list}>
                         {listRewards.map((item, index) => {
                             return (

@@ -28,6 +28,7 @@
         background: var(--tg-bg-color);
         padding: 1rem;
         line-height: 1.5;
+        font-size: 0.875rem;
 
         .title {
             display: flex;
@@ -60,18 +61,8 @@
             align-items: center;
             gap: 0.25rem;
 
-            &.views {
-                color: var(--tg-theme-hint-color);
-                font-weight: 500;
-            }
-
-            &.time {
-                color: var(--tg-theme-hint-color);
-            }
-
             &.rewards {
                 margin-top: 0.25rem;
-                color: var(--tg-theme-hint-color);
 
                 .list {
                     display: flex;

@@ -4,5 +4,5 @@
     display: flex;
     justify-items: stretch;
     padding: 0 16px;
-    padding-bottom: var(--tgui--safe_area_inset_bottom) !important;
+    padding-bottom: env(safe-area-inset-bottom);
 }

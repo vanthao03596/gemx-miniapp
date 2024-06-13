@@ -1,5 +1,4 @@
 import useAxiosAuth from "@/hooks/useAxiosAuth";
-import { useInterval } from "@/hooks/useInterval";
 import useTimer from "@/hooks/useTimer";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Spinner } from "@telegram-apps/telegram-ui";
@@ -28,28 +27,28 @@ export const Mine = ({
     return data;
   };
 
-  const [gem, setGem] = useState(0);
   const [isStart, setIsStart] = useState(false);
   const { start, restart, hours, minutes, seconds } = useTimer({
     expiryTimestamp: lastClaim ? dayjs.utc(lastClaim).add(6, "hours") : null,
   });
   const currentDate = new Date();
   const time = dayjs.utc(currentDate).diff(dayjs.utc(lastClaim), "seconds");
+
   const queyrClient = useQueryClient();
 
   useEffect(() => {
     if (lastClaim) {
-      restart();
-      start();
-      setIsStart(true);
-
-      if (time >= 24 * 3600) {
+      if (time >= 86400) {
         stop();
         setIsStart(false);
+      } else {
+        restart();
+        start();
+        setIsStart(true);
       }
-    }
-    setGem(lastClaim ? time * gemInSecond : 0);
-  }, [lastClaim, start, restart, time, gemInSecond]);
+    } 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lastClaim, time, gemInSecond]);
 
   const createLastClaimMuation = useMutation({
     mutationFn: createLastClaim,
@@ -62,9 +61,9 @@ export const Mine = ({
     },
   });
 
-  useInterval(() => {
-    setGem(gem + gemInSecond);
-  }, 1000);
+  // useInterval(() => {
+  //   setGem(gem + gemInSecond);
+  // }, isStart ? 1000 : null);
 
   const formatTime = (time: number) => {
     return ("0" + time).slice(-2);
@@ -83,7 +82,16 @@ export const Mine = ({
           <Spinner size="m" />
         ) : (
           <>
-            <h2>{isStart && !isLoading ? gem.toFixed(4) : "0"} GXP</h2>
+            {!lastClaim ? (
+              <h2>0 GXP</h2>
+            ) : (time >= 86400) ? (
+              <h2>{(86400 * gemInSecond).toFixed(4)} GXP</h2>
+            ) : (
+              <h2>
+                {isStart && !isLoading ? (time * gemInSecond).toFixed(4) : "0"}{" "}
+                GXP
+              </h2>
+            )}
             <p style={{ display: isStart && !isLoading ? "block" : "none" }}>
               {formatTime(hours)}h {formatTime(minutes)}m {formatTime(seconds)}s
             </p>
@@ -95,8 +103,14 @@ export const Mine = ({
         <div className={styles.buttonContainer}>
           <div className={styles.border} />
 
-          <Button disabled={Boolean(lastClaim && time < 6 * 3600)} loading={createLastClaimMuation.isPending} onClick={handleStart} style={{ minWidth: "200px" }} color="primary">
-          {lastClaim
+          <Button
+            disabled={Boolean(lastClaim && time < 6 * 3600)}
+            loading={createLastClaimMuation.isPending}
+            onClick={handleStart}
+            style={{ minWidth: "200px" }}
+            color="primary"
+          >
+            {lastClaim
               ? time >= 6 * 3600
                 ? "Claim"
                 : "Mining..."

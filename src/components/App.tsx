@@ -73,7 +73,7 @@ export const App: FC = () => {
                     appearance={miniApp.isDark ? 'dark' : 'light'}
                     platform={['macos', 'ios'].includes(lp.platform) ? 'ios' : 'base'}
                 >
-                    <div style={{ background: `url(${bg})` }}>
+                    <div style={{ background: `url(${bg}) center/cover no-repeat` }}>
                         <Router location={location} navigator={reactNavigator}>
                             <Routes>
                                 {/* Protected routes */}

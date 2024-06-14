@@ -19,6 +19,7 @@ import { ProtectedRoute } from '@/navigation/ProtectedRoute';
 import { routes } from '@/navigation/routes.tsx';
 import { RegisterPage } from '@/pages/RegisterPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import bg from '@/assets/images/background.jpg';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -72,19 +73,21 @@ export const App: FC = () => {
                     appearance={miniApp.isDark ? 'dark' : 'light'}
                     platform={['macos', 'ios'].includes(lp.platform) ? 'ios' : 'base'}
                 >
-                    <Router location={location} navigator={reactNavigator}>
-                        <Routes>
-                            {/* Protected routes */}
-                            <Route Component={ProtectedRoute}>
-                                {routes.map((route) => (
-                                    <Route key={route.path} {...route} />
-                                ))}
-                            </Route>
-                            {/* Not protected */}
-                            <Route path='/register' Component={RegisterPage} />
-                            <Route path='*' element={<Navigate to='/' />} />
-                        </Routes>
-                    </Router>
+                    <div style={{ background: `url(${bg})` }}>
+                        <Router location={location} navigator={reactNavigator}>
+                            <Routes>
+                                {/* Protected routes */}
+                                <Route Component={ProtectedRoute}>
+                                    {routes.map((route) => (
+                                        <Route key={route.path} {...route} />
+                                    ))}
+                                </Route>
+                                {/* Not protected */}
+                                <Route path='/register' Component={RegisterPage} />
+                                <Route path='*' element={<Navigate to='/' />} />
+                            </Routes>
+                        </Router>
+                    </div>
                 </AppRoot>
             </AxiosProvider>
         </QueryClientProvider>

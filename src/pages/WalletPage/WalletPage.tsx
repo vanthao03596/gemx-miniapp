@@ -1,19 +1,16 @@
 import { CustomHeader } from '@/components/CustomHeader';
 import { Link } from '@/components/Link/Link';
+import useAxiosAuth from '@/hooks/useAxiosAuth';
 import {
     BitcoinIconsReceiveOutline,
     BitcoinIconsSendOutline,
-    MaterialSymbolsLightAttachMoneyRounded,
     MaterialSymbolsLightChevronRightRounded,
-    MaterialSymbolsLightHistoryRounded,
-    MaterialSymbolsLightRocketLaunchOutlineRounded,
-    MaterialSymbolsLightSavingsOutlineRounded,
+    MaterialSymbolsLightHistoryRounded
 } from '@/icon/icon';
+import { useQuery } from '@tanstack/react-query';
 import { Avatar, Badge, Cell, Divider, IconButton, Section, Text, Title } from '@telegram-apps/telegram-ui';
 import React from 'react';
 import styles from './WalletPage.module.scss';
-import { useQuery } from '@tanstack/react-query';
-import useAxiosAuth from '@/hooks/useAxiosAuth';
 
 export interface WalletBalanceResponse {
     gxp: number;
@@ -37,21 +34,21 @@ const actions = [
         text: 'History',
         link: '/wallet/history',
     },
-    {
-        icon: <MaterialSymbolsLightAttachMoneyRounded fontSize={32} />,
-        text: 'Withdraw',
-        link: '/wallet/withdraw',
-    },
-    {
-        icon: <MaterialSymbolsLightSavingsOutlineRounded fontSize={32} />,
-        text: 'Saving',
-        link: '/wallet/saving',
-    },
-    {
-        icon: <MaterialSymbolsLightRocketLaunchOutlineRounded fontSize={32} />,
-        text: 'Airdrop',
-        link: '/wallet/airdrop',
-    },
+    // {
+    //     icon: <MaterialSymbolsLightAttachMoneyRounded fontSize={32} />,
+    //     text: 'Withdraw',
+    //     link: '/wallet/withdraw',
+    // },
+    // {
+    //     icon: <MaterialSymbolsLightSavingsOutlineRounded fontSize={32} />,
+    //     text: 'Saving',
+    //     link: '/wallet/saving',
+    // },
+    // {
+    //     icon: <MaterialSymbolsLightRocketLaunchOutlineRounded fontSize={32} />,
+    //     text: 'Airdrop',
+    //     link: '/wallet/airdrop',
+    // },
 ];
 
 const WalletPage = () => {

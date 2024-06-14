@@ -72,19 +72,23 @@ export const App: FC = () => {
                     appearance={miniApp.isDark ? 'dark' : 'light'}
                     platform={['macos', 'ios'].includes(lp.platform) ? 'ios' : 'base'}
                 >
-                    <Router location={location} navigator={reactNavigator}>
-                        <Routes>
-                            {/* Protected routes */}
-                            <Route Component={ProtectedRoute}>
-                                {routes.map((route) => (
-                                    <Route key={route.path} {...route} />
-                                ))}
-                            </Route>
-                            {/* Not protected */}
-                            <Route path='/register' Component={RegisterPage} />
-                            <Route path='*' element={<Navigate to='/' />} />
-                        </Routes>
-                    </Router>
+                    <div style={{ border: '2px solid red' }}>
+                        <div>Viewport: {viewport?.height}</div>
+                        <div>Window: {window.innerHeight}</div>
+                        <Router location={location} navigator={reactNavigator}>
+                            <Routes>
+                                {/* Protected routes */}
+                                <Route Component={ProtectedRoute}>
+                                    {routes.map((route) => (
+                                        <Route key={route.path} {...route} />
+                                    ))}
+                                </Route>
+                                {/* Not protected */}
+                                <Route path='/register' Component={RegisterPage} />
+                                <Route path='*' element={<Navigate to='/' />} />
+                            </Routes>
+                        </Router>
+                    </div>
                 </AppRoot>
             </AxiosProvider>
         </QueryClientProvider>

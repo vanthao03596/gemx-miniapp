@@ -1,12 +1,26 @@
-.title {
-    position: relative;
-    text-align: center;
-    padding: 1rem;
+@use "../../../styles/colors.scss";
+@use "../../../styles//typography/global-tokens.scss" as gt;
 
-    .icon {
-        position: absolute;
-        top: 50%;
-        left: 1rem;
-        transform: translate(0, -50%);
-    }
+.title {
+  position: relative;
+  text-align: center;
+  padding: 1rem;
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translate(0, -50%);
+  }
+
+  .heading {
+    background: colors.$headerTitle;
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: gt.$fontOrbitron;
+  }
 }

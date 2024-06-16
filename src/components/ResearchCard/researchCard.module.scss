@@ -1,8 +1,9 @@
 @use "../../../styles/radius.scss";
+@use "../../../styles/colors.scss";
 @use "../../../styles//typography/global-tokens.scss" as gt;
 
 .researchCardContainer {
-  background-color: var(--tg-bg-color);
+  background-color: colors.$bgColor;
   border-radius: radius.$roundedLg;
   overflow: hidden;
   display: block;
@@ -39,7 +40,7 @@
           font-size: gt.$fontSize14;
           line-height: gt.$lineHeight20;
           font-weight: 500;
-          color: var(--tg-theme-hint-color);
+          color: colors.$textPrimary;
         }
       }
 
@@ -52,7 +53,6 @@
           height: 16px;
           border-radius: radius.$roundedCircle;
           overflow: hidden;
-          background-color: var(--tg-theme-link-color);
           margin-right: -4px;
 
           & > img {
@@ -84,14 +84,14 @@
         font-size: gt.$fontSize16;
         line-height: gt.$lineHeight24;
         font-weight: 500;
-        color: var(--tg-theme-link-color);
+        color: colors.$primary;
       }
 
       .desc {
         font-size: gt.$fontSize14;
         line-height: gt.$lineHeight20;
         font-weight: normal;
-        color: var(--tg-theme-hint-color);
+        color: colors.$textPrimary;
       }
 
       .time {

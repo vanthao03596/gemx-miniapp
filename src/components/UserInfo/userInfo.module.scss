@@ -1,4 +1,12 @@
-.userInfo {
-  width: 100%;
-  aspect-ratio: 16/9;
+@use "../../../styles/colors.scss";
+
+.username {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  color: colors.$primary;
+}
+
+.level {
+  color: colors.$textPrimary;
 }

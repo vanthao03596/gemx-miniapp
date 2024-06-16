@@ -1,81 +1,85 @@
-.container {
-    .listContainer {
-        margin: 1rem 1rem 0;
-        border-radius: 0.5rem;
-        overflow: hidden;
-    }
+@use "../../../styles/colors.scss";
 
-    .pagination {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 1rem;
-    }
+.container {
+  .listContainer {
+    margin: 1rem 1rem 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
 }
 
 .questCard {
-    border-radius: 0.5rem;
-    overflow: hidden;
+  border-radius: 0.5rem;
+  overflow: hidden;
 
-    .image {
-        display: block;
-        width: 100%;
-        aspect-ratio: 16/9;
-        object-fit: cover;
-    }
+  .image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
 
-    .body {
-        background: var(--tg-bg-color);
-        padding: 1rem;
-        line-height: 1.5;
-        font-size: 0.875rem;
+  .body {
+    background: colors.$bgColor;
+    padding: 1rem;
+    line-height: 1.5;
+    font-size: 0.875rem;
+    color: colors.$textPrimary;
 
-        .title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 2rem;
-            text-transform: uppercase;
-            font-weight: 500;
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: colors.$primary;
 
-            .name {
-                font-size: 1.125rem;
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-            }
+      .name {
+        font-size: 1.125rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
 
-            .status {
-                &.ongoing {
-                    color: var(--tg-theme-link-color);
-                }
-
-                &.finished {
-                    color: var(--tg-theme-destructive-text-color);
-                }
-            }
+      .status {
+        &.ongoing {
+          color: var(--tg-theme-link-color);
         }
 
-        .center {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-
-            &.rewards {
-                margin-top: 0.25rem;
-
-                .list {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-
-                    .item {
-                        padding: 0 0.5rem;
-                        border-radius: 0.25rem;
-                        background: var(--tg-theme-secondary-bg-color);
-                    }
-                }
-            }
+        &.finished {
+          color: var(--tg-theme-destructive-text-color);
         }
+      }
     }
+
+    .center {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+
+      &.rewards {
+        margin-top: 0.25rem;
+
+        .list {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          .item {
+            padding: 0 0.5rem;
+            border-radius: 0.25rem;
+            background: var(--tg-theme-secondary-bg-color);
+          }
+        }
+      }
+    }
+  }
 }

@@ -4,4 +4,16 @@ $white: #ffffff;
 // Bottom navigation
 $bottomNavigationItemBg: #1c1f24;
 $bottomNavigationBg: #272a2f;
-$yellowGreen: #90ee90;
+$border: #94ffdf;
+$bgGradient: radial-gradient(
+  (
+    2058.68% 50% at 50% 50%,
+    rgba(43, 147, 122, 0.1) 0%,
+    rgba(43, 147, 122, 0) 100%
+  ),
+  #0a1013
+);
+$headerTitle: linear-gradient(180deg, #e2fff7 0%, #28ffc6 100%);
+$primary: #94ffdf;
+$textPrimary: #9aa7a4;
+$bgColor: #17212b;

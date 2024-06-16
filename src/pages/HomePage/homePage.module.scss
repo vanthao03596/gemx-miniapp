@@ -1,10 +1,12 @@
 @use "../../../styles/typography/global-tokens.scss" as gt;
+@use "../../../styles/colors.scss";
 
 .homePage {
   padding: 16px;
 
   .reward {
     margin-top: 16px;
+    color: rgb(0, 255, 212);
     & > div {
       margin-top: 10px;
       display: flex;
@@ -23,7 +25,7 @@
   h4 {
     font-size: gt.$fontSize20;
     line-height: gt.$lineHeight28;
-    color: var(--tg-theme-accent-text-color);
+    color: colors.$primary;
     margin-bottom: 24px;
     font-family: gt.$fontOrbitron;
   }
@@ -33,6 +35,7 @@
     li {
       font-size: gt.$fontSize14;
       line-height: gt.$lineHeight20;
+      color: colors.$textPrimary;
     }
   }
 }

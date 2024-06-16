@@ -1,4 +1,5 @@
 import { Avatar, Cell } from "@telegram-apps/telegram-ui";
+import styles from "./userInfo.module.scss";
 
 export const UserInfo = ({
   src,
@@ -12,10 +13,10 @@ export const UserInfo = ({
   <>
     <Cell
       before={<Avatar size={48} src={src} />}
-      subtitle={`Level ${level}`}
+      subtitle={<span className={styles.level}>Level {level}</span>}
       style={{ padding: 0 }}
     >
-      {username}
+      <span className={styles.username}>{username}</span>
     </Cell>
   </>
 );

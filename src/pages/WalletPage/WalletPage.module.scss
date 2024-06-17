@@ -1,6 +1,8 @@
 @use '../../../styles/colors.scss';
 
 .container {
+    --tgui--tertiary_bg_color: var(--background-hover);
+
     .action {
         margin-top: 1rem;
 

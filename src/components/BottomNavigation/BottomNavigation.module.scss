@@ -1,6 +1,6 @@
 .container {
     border-top: 1px solid #262f31;
-    background: #0a1013;
+    background: var(--background);
     box-shadow: 0 -1px 0 var(--tgui--divider);
     display: flex;
     justify-items: stretch;

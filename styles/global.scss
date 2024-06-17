@@ -1,26 +1,30 @@
-@use "./typography";
-@use "./colors.scss";
+@use './typography';
+@use './colors.scss';
 
 html,
 body {
-  background: var(--tg-theme-secondary-bg-color, white);
-  position: relative;
-  padding: 0;
-  margin: 0;
-  font-family: typography.$fontFamily;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: url("/images/background.jpg") no-repeat center/cover;
-  min-height: 100vh;
+    background: var(--tg-theme-secondary-bg-color, white);
+    position: relative;
+    padding: 0;
+    margin: 0;
+    font-family: typography.$fontFamily;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: url('/images/background.jpg') no-repeat center/cover;
+    min-height: 100vh;
+
+    --tg-theme-link-color: #94ffdf;
+    --tg-theme-button-color: #94ffdf;
+    --tg-theme-button-text-color: #0a1013;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 h1,
@@ -30,19 +34,19 @@ h4,
 h5,
 h6,
 p {
-  margin: 0;
+    margin: 0;
 }
 
 .icon {
-  width: 16px;
-  height: 16px;
-  color: var(--tg-secondary-hint-color);
-  opacity: 0.8;
+    width: 16px;
+    height: 16px;
+    color: var(--tg-secondary-hint-color);
+    opacity: 0.8;
 }
 
 .line-clamp {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }

@@ -1,57 +1,57 @@
-@use "../../../styles/colors.scss";
+@use '../../../styles/colors.scss';
 
 .container {
-  .action {
-    margin-top: 1rem;
+    .action {
+        margin-top: 1rem;
 
-    .group {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+        .group {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
 
-      .item {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 0.25rem;
+            .item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 0.25rem;
 
-        .icon {
-          border-radius: 50%;
-          overflow: hidden;
-          padding: 0.75rem;
+                .icon {
+                    border-radius: 50%;
+                    overflow: hidden;
+                    padding: 0.75rem;
+                }
+            }
         }
-      }
-    }
-  }
-
-  .balance {
-    margin-top: 2rem;
-
-    .title {
-      text-align: center;
-      color: colors.$primary;
     }
 
-    .section {
-      margin: 1rem 1rem 0;
-      border-radius: 0.5rem;
-      overflow: hidden;
-    }
+    .balance {
+        margin-top: 2rem;
 
-    .cell {
-      .badge {
-        display: flex;
-        align-items: center;
-        .chevron {
-          color: var(--tg-theme-hint-color);
+        .title {
+            text-align: center;
+            color: colors.$primary;
         }
-      }
 
-      .text {
-        color: var(--tg-theme-text-color);
-        font-weight: 500;
-      }
+        .section {
+            margin: 1rem 1rem 0;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .cell {
+            .badge {
+                display: flex;
+                align-items: center;
+                .chevron {
+                    color: var(--tg-theme-hint-color);
+                }
+            }
+
+            .text {
+                color: var(--tg-theme-text-color);
+                font-weight: 500;
+            }
+        }
     }
-  }
 }

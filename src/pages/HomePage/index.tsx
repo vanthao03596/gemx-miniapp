@@ -86,7 +86,7 @@ export const HomePage = (): JSX.Element => {
           </Modal>
         </div>
       </div>
-      <Button onClick={() => u.openTelegramLink('https://t.me/share?' + new URLSearchParams({ url: 'https://t.me/GemxMiniappBot?start=827738864', text: 'hello' }).toString())}>Tets</Button>
+      <Button onClick={() => u.openTelegramLink('https://t.me/share/url?url=https://t.me/GemxMiniappBot?start=827738864&text=123')}>Tets</Button>
       <Mine
         gemInSecond={Number(accountData?.user.mint_gxp_per_second)}
         lastClaim={lastClaimData?.last_claim as Date}

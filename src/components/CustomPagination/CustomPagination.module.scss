@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    color: var(--tg-theme-button-color);
 
     .numberContainer {
         display: flex;
@@ -11,14 +12,11 @@
     .arrow {
         width: 2rem;
         height: 2rem;
-        background: var(--client-bg-body-secondary);
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: var(--client-card-shadow);
         border-radius: 0.25rem;
         cursor: pointer;
-        color: var(--client-icon-dark);
     }
 
     .center {
@@ -26,5 +24,6 @@
         align-items: center;
         justify-content: center;
         min-width: 2.625rem;
+        cursor: pointer;
     }
 }

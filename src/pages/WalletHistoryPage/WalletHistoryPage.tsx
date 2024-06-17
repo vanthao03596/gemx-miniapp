@@ -114,7 +114,7 @@ const WalletHistoryPage = () => {
             </Section>
 
             {/* Pagination */}
-            {dataTransactions && (
+            {dataTransactions && dataTransactions?.data.length > 0 && (
                 <div className={styles.pagination}>
                     <CustomPagination
                         pageNumber={dataTransactions.current_page}

@@ -1,4 +1,7 @@
 .container {
+    position: fixed;
+    top: calc(100dvh - 74.8px);
+    bottom: unset !important;
     border-top: 1px solid #262f31;
     background: var(--background);
     box-shadow: 0 -1px 0 var(--tgui--divider);

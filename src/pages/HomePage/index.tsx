@@ -9,6 +9,7 @@ import { ModalClose } from "@telegram-apps/telegram-ui/dist/components/Overlays/
 import { ModalHeader } from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
 import styles from "./homePage.module.scss";
 import { truncateEthAddress } from "@/utils/truncateEthAddress";
+import { useUtils } from "@tma.js/sdk-react";
 
 type Response<T> = {
   user: T;
@@ -37,6 +38,9 @@ export const HomePage = (): JSX.Element => {
     queryFn: () => fetchAccount(),
   });
 
+  const u = useUtils();
+  
+  
   return (
     <div className={styles.homePage}>
       <UserInfo
@@ -82,6 +86,7 @@ export const HomePage = (): JSX.Element => {
           </Modal>
         </div>
       </div>
+      <Button onClick={() => u.openTelegramLink('https://t.me/share?' + new URLSearchParams({ url: 'https://t.me/GemxMiniappBot?start=827738864', text: 'hello' }).toString())}>Tets</Button>
       <Mine
         gemInSecond={Number(accountData?.user.mint_gxp_per_second)}
         lastClaim={lastClaimData?.last_claim as Date}

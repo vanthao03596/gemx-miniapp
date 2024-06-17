@@ -1,4 +1,10 @@
-import Svg from '@/icon/svg';
+import {
+    MaterialSymbolsAccountBalanceWallet,
+    MaterialSymbolsBreakingNewsRounded,
+    MaterialSymbolsCampaignRounded,
+    MaterialSymbolsHouseRounded,
+    MaterialSymbolsPerson,
+} from '@/icon/icon';
 import { HomePage } from '@/pages/HomePage';
 import { LaunchParamsPage } from '@/pages/LaunchParamsPage/LaunchParamsPage.tsx';
 import { QuestPage } from '@/pages/QuestPage';
@@ -21,48 +27,45 @@ export const routes: Route[] = [
         path: '/',
         Component: HomePage,
         title: 'Home',
-        icon: <Svg src='/icons/home.svg' className='icon' />,
+        icon: <MaterialSymbolsHouseRounded fontSize={18} />,
     },
     {
         path: '/wallet',
         Component: WalletPage,
         title: 'Wallet',
-        icon: <Svg src='/icons/wallet.svg' className='icon' />,
+        icon: <MaterialSymbolsAccountBalanceWallet fontSize={18} />,
     },
     {
         path: '/research',
         Component: ResearchPage,
         title: 'Research',
-        icon: <Svg src='/icons/research.svg' className='icon' />,
+        icon: <MaterialSymbolsBreakingNewsRounded fontSize={18} />,
     },
     {
         path: '/quest',
         Component: QuestPage,
         title: 'Quest',
-        icon: <Svg src='/icons/quest.svg' className='icon' />,
+        icon: <MaterialSymbolsCampaignRounded fontSize={18} />,
     },
     {
         path: '/user',
         Component: UserPage,
         title: 'User',
-        icon: <Svg src='/icons/user.svg' className='icon' />,
+        icon: <MaterialSymbolsPerson fontSize={18} />,
     },
     {
         path: '/wallet/history',
         Component: WalletHistoryPage,
         title: 'Wallet History',
-        icon: <Svg src='/icons/home.svg' className='icon' />,
     },
     {
         path: '/theme-params',
         Component: ThemeParamsPage,
         title: 'Theme',
-        icon: <Svg src='/icons/home.svg' className='icon' />,
     },
     {
         path: '/launch-params',
         Component: LaunchParamsPage,
         title: 'Launch',
-        icon: <Svg src='/icons/home.svg' className='icon' />,
     },
 ];

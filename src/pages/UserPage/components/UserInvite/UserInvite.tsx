@@ -2,19 +2,21 @@ import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
 import { TablerCopy, TablerShare3 } from '@/icon/icon';
 import { useInitData, useUtils } from '@tma.js/sdk-react';
 import styles from './UserInvite.module.scss';
+import toast from 'react-hot-toast';
 
 const MY_REFERRALS = 0;
 
 const UserInvite = () => {
     const utils = useUtils();
     const userId = useInitData()?.user?.id;
+    const shareText = 'Join with us to get rewards together';
     const inviteLink = `https://t.me/GemxMiniappBot?start=${userId}`;
-    const shareText = '123465';
-    const shareLink = `https://t.me/share/url?url=https://t.me/GemxMiniappBot?start=${userId}&text=${shareText}`;
+    const shareLink = `https://t.me/share/url?url=${inviteLink}&text=${shareText}`;
     const [, copy] = useCopyToClipboard();
 
     const handleCopy = () => {
         copy(inviteLink);
+        toast.success('Copy to clipboard successful');
     };
 
     const handleShare = () => {
@@ -36,7 +38,7 @@ const UserInvite = () => {
 
                 {/* Input with copy */}
                 <div className={styles.inputContainer}>
-                    <input type='text' className={styles.input} readOnly />
+                    <input type='text' readOnly defaultValue={inviteLink} className={styles.input} />
                     <div className={styles.icon}>
                         <TablerCopy className={styles.copy} onClick={handleCopy} />
                     </div>

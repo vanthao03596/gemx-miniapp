@@ -189,3 +189,57 @@ export function TablerShare3(props: SVGProps<SVGSVGElement>) {
         </svg>
     );
 }
+
+export function MaterialSymbolsAccountBalanceWallet(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24' {...props}>
+            <path
+                fill='currentColor'
+                d='M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5h-8q-1.775 0-2.887 1.113T9 9v6q0 1.775 1.113 2.888T13 19h8q0 .825-.587 1.413T19 21zm8-4q-.825 0-1.412-.587T11 15V9q0-.825.588-1.412T13 7h7q.825 0 1.413.588T22 9v6q0 .825-.587 1.413T20 17zm3-3.5q.65 0 1.075-.425T17.5 12t-.425-1.075T16 10.5t-1.075.425T14.5 12t.425 1.075T16 13.5'
+            ></path>
+        </svg>
+    );
+}
+export function MaterialSymbolsHouseRounded(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24' {...props}>
+            <path
+                fill='currentColor'
+                d='M7 20q-.825 0-1.412-.587T5 18v-7.15l-2 1.525q-.35.25-.75.213T1.6 12.2t-.2-.75t.4-.65l8.975-6.875q.275-.2.588-.3t.637-.1t.638.1t.587.3L16 6.05V5.5q0-.625.438-1.062T17.5 4t1.063.438T19 5.5v2.85l3.2 2.45q.325.25.388.65t-.188.75t-.65.388t-.75-.213l-2-1.525V18q0 .825-.587 1.413T17 20h-1q-.825 0-1.412-.587T14 18v-2q0-.825-.587-1.412T12 14t-1.412.588T10 16v2q0 .825-.587 1.413T8 20zm3-9.975h4q0-.8-.6-1.313T12 8.2t-1.4.513t-.6 1.312'
+            ></path>
+        </svg>
+    );
+}
+
+export function MaterialSymbolsBreakingNewsRounded(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24' {...props}>
+            <path
+                fill='currentColor'
+                d='M7 17q.425 0 .713-.288T8 16t-.288-.712T7 15t-.712.288T6 16t.288.713T7 17M7 7q-.425 0-.712.288T6 8v4q0 .425.288.713T7 13t.713-.288T8 12V8q0-.425-.288-.712T7 7m10 10q.425 0 .713-.288T18 16t-.288-.712T17 15h-5q-.425 0-.712.288T11 16t.288.713T12 17zm0-4q.425 0 .713-.288T18 12t-.288-.712T17 11h-5q-.425 0-.712.288T11 12t.288.713T12 13zm0-4q.425 0 .713-.288T18 8t-.288-.712T17 7h-5q-.425 0-.712.288T11 8t.288.713T12 9zM4 21q-.825 0-1.412-.587T2 19V5q0-.825.588-1.412T4 3h16q.825 0 1.413.588T22 5v14q0 .825-.587 1.413T20 21z'
+            ></path>
+        </svg>
+    );
+}
+
+export function MaterialSymbolsCampaignRounded(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24' {...props}>
+            <path
+                fill='currentColor'
+                d='M21 13h-2q-.425 0-.712-.288T18 12t.288-.712T19 11h2q.425 0 .713.288T22 12t-.288.713T21 13m-4.4 3.8q.25-.35.65-.4t.75.2l1.6 1.2q.35.25.4.65t-.2.75t-.65.4t-.75-.2l-1.6-1.2q-.35-.25-.4-.65t.2-.75m3-10.6L18 7.4q-.35.25-.75.2t-.65-.4t-.2-.75t.4-.65l1.6-1.2q.35-.25.75-.2t.65.4t.2.75t-.4.65M5 15H4q-.825 0-1.412-.587T2 13v-2q0-.825.588-1.412T4 9h4l3.475-2.1q.5-.3 1.013 0t.512.875v8.45q0 .575-.513.875t-1.012 0L8 15H7v3q0 .425-.288.713T6 19t-.712-.288T5 18zm9 .35v-6.7q.675.6 1.088 1.463T15.5 12t-.413 1.888T14 15.35'
+            ></path>
+        </svg>
+    );
+}
+
+export function MaterialSymbolsPerson(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24' {...props}>
+            <path
+                fill='currentColor'
+                d='M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 8v-2.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20z'
+            ></path>
+        </svg>
+    );
+}

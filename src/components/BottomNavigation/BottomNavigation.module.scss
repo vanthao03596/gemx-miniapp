@@ -1,6 +1,7 @@
 .container {
+    min-height: 5rem;
     position: fixed;
-    top: calc(100dvh - 74.8px);
+    top: calc(100dvh - 5rem);
     bottom: unset !important;
     border-top: 1px solid #262f31;
     background: var(--background);

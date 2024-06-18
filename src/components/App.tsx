@@ -38,7 +38,7 @@ export const App: FC = () => {
 
     useEffect(() => {
         miniApp.ready()
-    })
+    }, [miniApp])
 
 
     useEffect(() => {

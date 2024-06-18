@@ -46,7 +46,7 @@ export const App: FC = () => {
     }, [themeParams]);
 
     useEffect(() => {
-        postEvent('web_app_ready')
+        postEvent('web_app_ready');
 
         viewport?.expand();
 
@@ -72,19 +72,19 @@ export const App: FC = () => {
     return (
         <QueryClientProvider client={queryClient}>
             <AxiosProvider>
-                <AppRoot
+                {/* <AppRoot
                     appearance={miniApp.isDark ? 'dark' : 'light'}
                     platform={['macos', 'ios'].includes(lp.platform) ? 'ios' : 'base'}
                 >
                     <Router location={location} navigator={reactNavigator}>
                         <Routes>
-                            {/* Protected routes */}
+                           
                             <Route Component={ProtectedRoute}>
                                 {routes.map((route) => (
                                     <Route key={route.path} {...route} />
                                 ))}
                             </Route>
-                            {/* Not protected */}
+                        
                             <Route path='/register' Component={RegisterPage} />
                             <Route path='*' element={<Navigate to='/' />} />
                         </Routes>
@@ -98,7 +98,73 @@ export const App: FC = () => {
                             },
                         }}
                     />
-                </AppRoot>
+                </AppRoot> */}
+                <div style={{ border: '2px solid red', minHeight: '100vh' }}>
+                    <div style={{ background: 'blue' }}>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                        <div>aaaaaaaa</div>
+                    </div>
+                    <div
+                        style={{
+                            background: 'green',
+                            position: 'fixed',
+                            bottom: '2px',
+                            left: '2px',
+                            right: '2px',
+                            height: '4rem',
+                        }}
+                    >
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                    </div>
+                </div>
             </AxiosProvider>
         </QueryClientProvider>
     );

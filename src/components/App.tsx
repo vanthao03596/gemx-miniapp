@@ -1,4 +1,4 @@
-import { AppRoot } from '@telegram-apps/telegram-ui';
+// import { AppRoot } from '@telegram-apps/telegram-ui';
 import { useIntegration } from '@tma.js/react-router-integration';
 import {
     bindMiniAppCSSVars,
@@ -13,13 +13,13 @@ import {
     useViewport,
 } from '@tma.js/sdk-react';
 import { useEffect, useMemo, type FC } from 'react';
-import { Navigate, Route, Router, Routes } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
+// import { Navigate, Route, Router, Routes } from 'react-router-dom';
+// import { Toaster } from 'react-hot-toast';
 
 import AxiosProvider from '@/context/AxiosProvider';
-import { ProtectedRoute } from '@/navigation/ProtectedRoute';
-import { routes } from '@/navigation/routes.tsx';
-import { RegisterPage } from '@/pages/RegisterPage';
+// import { ProtectedRoute } from '@/navigation/ProtectedRoute';
+// import { routes } from '@/navigation/routes.tsx';
+// import { RegisterPage } from '@/pages/RegisterPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient({

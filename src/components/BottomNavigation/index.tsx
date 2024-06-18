@@ -15,7 +15,7 @@ export const BottomNavigation = () => {
     };
 
     return (
-            <AntTabBar activeKey={pathname} onChange={value => handleClick(value)} className={styles.container}>
+            <AntTabBar activeKey={pathname} onChange={value => handleClick(value)} className={styles.container} safeArea={true}>
                 {routes
                     .filter((item) => navItems.includes(item.path))
                     .map(({ title, path, icon }) => (

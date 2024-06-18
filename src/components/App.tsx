@@ -36,8 +36,6 @@ export const App: FC = () => {
     const viewport = useViewport();
     const closing = useClosingBehavior();
 
-    miniApp.ready();
-
     useEffect(() => {
         return bindMiniAppCSSVars(miniApp, themeParams);
     }, [miniApp, themeParams]);

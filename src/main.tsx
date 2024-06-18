@@ -3,10 +3,13 @@ import "@telegram-apps/telegram-ui/dist/styles.css";
 import { mockTelegramEnv, parseInitData, retrieveLaunchParams } from "@tma.js/sdk-react";
 import ReactDOM from "react-dom/client";
 import "../styles/global.scss";
+import { postEvent } from '@tma.js/sdk';
 
 // This line of code allows us to safely launch the application even outside
 // the Telegram application. It will also only be applied in development mode, not in
 // production.
+postEvent('web_app_ready');
+
 if (import.meta.env.DEV) {
   try {
     retrieveLaunchParams();

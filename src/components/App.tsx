@@ -45,9 +45,15 @@ export const App: FC = () => {
     }, [themeParams]);
 
     useEffect(() => {
-        viewport?.expand();
+        miniApp.ready()
+    }, [])
 
+    useEffect(() => {
         return viewport && bindViewportCSSVars(viewport);
+    }, [viewport]);
+
+    useEffect(() => {
+        viewport?.expand()
     }, [viewport]);
 
     useEffect(() => {

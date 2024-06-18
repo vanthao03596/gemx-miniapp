@@ -9,8 +9,8 @@ import "../styles/global.scss";
 // production.
 if (import.meta.env.DEV) {
   try {
-    // retrieveLaunchParams();
-    throw new Error();
+    retrieveLaunchParams();
+    // throw new Error();
   } catch {
     const initDataRaw = new URLSearchParams([
       [

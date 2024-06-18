@@ -61,3 +61,10 @@ p {
 #root {
     min-height: 100vh;
 }
+
+body {
+    // height: 100vh;
+    border: 2px solid red;
+    margin: 0;
+    box-sizing: border-box;
+}

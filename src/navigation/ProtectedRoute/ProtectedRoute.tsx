@@ -1,4 +1,4 @@
-import { BottomNavigation } from '@/components/BottomNavigation';
+// import { BottomNavigation } from '@/components/BottomNavigation';
 import useAxiosAuth from '@/hooks/useAxiosAuth';
 import { useQuery } from '@tanstack/react-query';
 import { useLaunchParams } from '@tma.js/sdk-react';
@@ -58,7 +58,7 @@ const ProtectedRoute = () => {
                     <Outlet />
                 </div>
                 <div className={styles.bottom}>
-                    <BottomNavigation />
+                    {/* <BottomNavigation /> */}
                 </div>
             {/* </div> */}
         </>

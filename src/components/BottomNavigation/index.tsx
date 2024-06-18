@@ -3,6 +3,7 @@ import { Tabbar } from '@telegram-apps/telegram-ui';
 import { useLocation, useNavigate } from 'react-router-dom';
 // import { TabBar as AntTabBar } from 'antd-mobile'
 import styles from './BottomNavigation.module.scss';
+import { SafeArea } from 'antd-mobile';
 
 const navItems = ['/', '/wallet', '/research', '/quest', '/user'];
 
@@ -15,6 +16,7 @@ export const BottomNavigation = () => {
     };
 
     return (
+        <>
             <Tabbar className={styles.container}>
                 {routes
                     .filter((item) => navItems.includes(item.path))
@@ -30,5 +32,7 @@ export const BottomNavigation = () => {
                         </Tabbar.Item>
                     ))}
             </Tabbar>
+            <SafeArea position='bottom' />
+        </>
     );
 };

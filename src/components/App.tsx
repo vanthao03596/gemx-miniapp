@@ -45,10 +45,11 @@ export const App: FC = () => {
     }, [themeParams]);
 
     useEffect(() => {
+        miniApp.ready()
         viewport?.expand();
 
         return viewport && bindViewportCSSVars(viewport);
-    }, [viewport]);
+    }, [viewport, miniApp]);
 
     useEffect(() => {
         closing.enableConfirmation();

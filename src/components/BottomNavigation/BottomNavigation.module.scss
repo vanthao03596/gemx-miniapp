@@ -2,8 +2,8 @@
     border-top: 1px solid #262f31;
     background: var(--background);
     box-shadow: 0 -1px 0 var(--tgui--divider);
-    display: flex;
+    // display: flex;
     justify-items: stretch;
     padding: 0 16px;
-    padding-bottom: env(safe-area-inset-bottom);
+    // padding-bottom: env(safe-area-inset-bottom);
 }

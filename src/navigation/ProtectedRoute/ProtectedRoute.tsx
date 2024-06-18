@@ -57,9 +57,9 @@ const ProtectedRoute = () => {
                 <div className={styles.body}>
                     <Outlet />
                 </div>
-                {/* <div className={styles.bottom}> */}
+                <div className={styles.bottom}>
                     <BottomNavigation />
-                {/* </div> */}
+                </div>
             {/* </div> */}
         </>
     ) : (

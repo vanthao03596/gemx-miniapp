@@ -37,8 +37,9 @@ export const App: FC = () => {
     const closing = useClosingBehavior();
 
     useEffect(() => {
-        miniApp.ready()
-    }, [miniApp])
+        //@ts-expect-error abc
+        window.Telegram.WebApp.ready();
+    }, [])
 
 
     useEffect(() => {

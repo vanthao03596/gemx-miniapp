@@ -37,6 +37,11 @@ export const App: FC = () => {
     const closing = useClosingBehavior();
 
     useEffect(() => {
+        miniApp.ready()
+    })
+
+
+    useEffect(() => {
         return bindMiniAppCSSVars(miniApp, themeParams);
     }, [miniApp, themeParams]);
 
@@ -45,11 +50,10 @@ export const App: FC = () => {
     }, [themeParams]);
 
     useEffect(() => {
-        miniApp.ready()
-        viewport?.expand();
+        // viewport?.expand();
 
         return viewport && bindViewportCSSVars(viewport);
-    }, [viewport, miniApp]);
+    }, [viewport]);
 
     useEffect(() => {
         closing.enableConfirmation();

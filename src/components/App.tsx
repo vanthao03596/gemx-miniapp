@@ -72,10 +72,10 @@ export const App: FC = () => {
     return (
         <QueryClientProvider client={queryClient}>
             <AxiosProvider>
-                {/* <AppRoot
+                <AppRoot
                     appearance={miniApp.isDark ? 'dark' : 'light'}
                     platform={['macos', 'ios'].includes(lp.platform) ? 'ios' : 'base'}
-                > */}
+                >
                     <Router location={location} navigator={reactNavigator}>
                         <Routes>
                             {/* Protected routes */}
@@ -98,7 +98,7 @@ export const App: FC = () => {
                             },
                         }}
                     />
-                {/* </AppRoot> */}
+                </AppRoot>
             </AxiosProvider>
         </QueryClientProvider>
     );

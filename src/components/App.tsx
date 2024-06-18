@@ -5,7 +5,6 @@ import {
     bindThemeParamsCSSVars,
     bindViewportCSSVars,
     initNavigator,
-    postEvent,
     useClosingBehavior,
     // useLaunchParams,
     useMiniApp,
@@ -48,8 +47,6 @@ export const App: FC = () => {
     }, [themeParams]);
 
     useEffect(() => {
-        postEvent('web_app_ready');
-
         viewport?.expand();
 
         return viewport && bindViewportCSSVars(viewport);

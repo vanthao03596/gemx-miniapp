@@ -5,6 +5,7 @@ import {
     bindThemeParamsCSSVars,
     bindViewportCSSVars,
     initNavigator,
+    postEvent,
     useClosingBehavior,
     useLaunchParams,
     useMiniApp,
@@ -37,12 +38,6 @@ export const App: FC = () => {
     const closing = useClosingBehavior();
 
     useEffect(() => {
-        //@ts-expect-error abc
-        window.Telegram.WebApp.ready();
-    }, [])
-
-
-    useEffect(() => {
         return bindMiniAppCSSVars(miniApp, themeParams);
     }, [miniApp, themeParams]);
 
@@ -51,7 +46,9 @@ export const App: FC = () => {
     }, [themeParams]);
 
     useEffect(() => {
-        // viewport?.expand();
+        postEvent('web_app_ready')
+
+        viewport?.expand();
 
         return viewport && bindViewportCSSVars(viewport);
     }, [viewport]);

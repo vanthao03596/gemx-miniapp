@@ -99,7 +99,7 @@ export const App: FC = () => {
                         }}
                     />
                 </AppRoot> */}
-                <div style={{ border: '2px solid red', minHeight: '100vh' }}>
+                <div style={{ border: '4px solid red', minHeight: '100vh' }}>
                     <div style={{ background: 'blue' }}>
                         <div>aaaaaaaa</div>
                         <div>aaaaaaaa</div>
@@ -154,7 +154,7 @@ export const App: FC = () => {
                         style={{
                             background: 'green',
                             position: 'fixed',
-                            bottom: '2px',
+                            bottom: '4px',
                             left: '2px',
                             right: '2px',
                             height: '4rem',
